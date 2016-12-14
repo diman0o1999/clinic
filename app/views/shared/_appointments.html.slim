@@ -1,0 +1,17 @@
+.signup
+  .inner
+    h2.title Записаться на прием
+    form.form action="/" method="post"
+      .form__row
+        .form__item.form__item_col-14
+          input.form__inp name="name" placeholder=("Фамилия Имя Отчество *") required="" type="text" /
+        .form__item.form__item_col-9
+          input.form__inp name="phone" placeholder=("Телефон *") required="" type="tel" /
+        .form__item.form__item_col-8
+          select.form__sel name="fil"
+            option value="3"  Ленинский Проспект
+            option value="2"  Проспект Большевиков
+            option value="1"  Пионерская
+      .form__row.form__row_sbm
+        .form__item.form__item_align_center
+          input.btn.btn_size_s.form__sbm name="in" type="submit" value="ЗАПИСАТЬСЯ" /

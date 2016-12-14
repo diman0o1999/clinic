@@ -1,0 +1,11 @@
+p
+  = form_tag({controller: "contacts", action: "index"}, method: "post") do
+    .form-inline
+      .form-gr
+        = text_field_tag :name
+      .form-gr-2
+        = telephone_field_tag :telephone
+      .form-gr-3
+        = submit_tag("ЗАПИСАТЬСЯ")
+      .form-gr-4
+        = hidden_field_tag :filial
