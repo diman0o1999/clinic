@@ -8,7 +8,7 @@ $(document).ready(function(){
                 scrollTop:0
             },1000);
         })
-    })
+    });
     // при прокрутке окна (window)
     $(window).scroll(function() {
         // если пользователь прокрутил страницу более чем на 200px
@@ -21,6 +21,15 @@ $(document).ready(function(){
             $('.scrollup').fadeOut();
         }
     });
+
+
+    //в контактах делаем первый филиал активным
+    var filials = $('.nav-justified li');
+    for(var i = 0; i < filials.length; i++) {
+        if(i == 0) {
+            $(filials[i]).addClass('active')
+        }
+    }
 
     //в контактах ищем активный филиал
     $('.form-gr-3').click(function(){

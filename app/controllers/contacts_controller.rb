@@ -1,7 +1,6 @@
 class ContactsController < ApplicationController
   def index
-    @name = params[:name]
-    @tel = params[:telephone]
-    @filial = params[:filial]
+    @form = Form.new
+    @filials = Filial.all
   end
 end

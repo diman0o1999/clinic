@@ -4,12 +4,9 @@ section.page.section
     p.page__desc Уважаемые клиенты, Вы можете записаться на прием в одном из отделений «Клиники Доброго Стоматолога». Укажите Ваш телефон и в ближайшее время с Вами свяжется наш администратор и согласует удобные для Вас дату и время приема.
 
     ul.nav.nav-tabs.nav-justified
-      li.active
-        a data-toggle="tab" href="#panel1" ст.метро «Пионерская»
-      li
-        a data-toggle="tab" href="#panel2" ст.метро «Проспект Большевиков»
-      li
-        a data-toggle="tab" href="#panel3" ст.метро «Ленинский проспект»
+      - @filials.each_with_index do |filial, index|
+        li
+          a data-toggle="tab" href="#panel#{index+1}" = filial.metro
 
       .tab-content
         #panel1.tab-pane.fade.in.active
@@ -20,14 +17,7 @@ section.page.section
             p с 09:00 до 21:00
             p без выходных
           /форма
-          = render 'contacts/contacts_form'
-          p
-            = @name
-          p
-            = @tel
-          p
-            = @filial
-          p
+          = render 'contacts/form'
 
           script charset="utf-8" src="https://api-maps.yandex.ru/services/constructor/1.0/js/?sid=10BXC9OeNeLviWnmCBks4UcJP3KpMbRg&width=100%&height=300&lang=ru_RU&sourceType=constructor" type="text/javascript"
 
@@ -39,13 +29,7 @@ section.page.section
             p с 09:00 до 21:00
             p без выходных
           /форма
-          = render 'contacts/contacts_form'
-          p
-            = @name
-          p
-            = @tel
-          p
-            = @filial
+          = render 'contacts/form'
 
           script charset="utf-8" src="https://api-maps.yandex.ru/services/constructor/1.0/js/?sid=HcmxgpJBTuT-FY5amHsTxtWQLRBLuD1c&width=100%&height=300&lang=ru_RU&sourceType=constructor" type="text/javascript"
 
@@ -57,12 +41,6 @@ section.page.section
             p с 09:00 до 21:00
             p без выходных
           /форма
-          = render 'contacts/contacts_form'
-          p
-            = @name
-          p
-            = @tel
-          p
-            = @filial
+          = render 'contacts/form'
 
           script charset="utf-8" src="https://api-maps.yandex.ru/services/constructor/1.0/js/?sid=kGp764s8WtHzyff6_fa_aUjejM269V9A&width=100%&height=300&lang=ru_RU&sourceType=constructor" type="text/javascript"

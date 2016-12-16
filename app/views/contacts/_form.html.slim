@@ -1,0 +1,17 @@
+p
+  = form_for @form do |f|
+    - if @form.errors.any?
+      #error_explanation
+        h2 = "#{pluralize(@form.errors.count, "error")} :прежде чем отправить заявку, заполните поля:"
+        ul
+          - @form.errors.full_messages.each do |message|
+            li = message
+    .form-inline
+      .form-gr
+        = f.text_field :name, :required => true, :placeholder => "Фамилия Имя Отчество*"
+      .form-gr-2
+        = f.telephone_field :telephone, :required => true, :placeholder => "Телефон*"
+      .form-gr-3
+        = f.submit("ЗАПИСАТЬСЯ")
+      .form-gr-4
+        = f.hidden_field :filial
