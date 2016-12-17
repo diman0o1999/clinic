@@ -1,6 +1,47 @@
 /*
 */
 /* normalize.css v2.1.0 | MIT License | git.io/normalize */
+.nav__link a{
+    color: white;
+}
+.nav__link a:hover{
+    color: white;
+    text-decoration: none;
+}
+.header__phone a{
+    text-decoration: none;
+    color: #043728;
+}
+.header__phone a:hover{
+    text-decoration: none;
+    color: #043728;
+}
+.footer-nav__link a{
+    color: white;
+    text-decoration: none;
+}
+.footer-nav__link a:hover{
+    color: white;
+    text-decoration: none;
+}
+.row, .container {
+    margin-bottom: 60px;
+    margin-top: 60px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 article,
 aside,
 details,
@@ -51,7 +92,7 @@ select{
 div.scrollup {
     position: fixed; /* фиксированная позиция */
     color: #fff; /* цвет текста */
-    background-color: #4e9c84; /* цвет заднего фона */
+    background-color: #22453a; /* цвет заднего фона */
     right: 40px; /* расстояние от правого края */
     bottom: 40px; /* расстояние от нижнего края */
     padding: 4px 10px; /* отступы до содержимого блока */

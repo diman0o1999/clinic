@@ -6,36 +6,31 @@ footer.footer
       .footer-nav
         ul.footer-nav__list
           li.footer-nav__item
-            a.footer-nav__link href="#"  О компании
+            .footer-nav__link = link_to 'О компании', contacts_path
           li.footer-nav__item
-            a.footer-nav__link href="#"  Наши врачи
+            .footer-nav__link = link_to 'Наши врачи', contacts_path
           li.footer-nav__item
-            a.footer-nav__link href="#"  Оборудование
+            .footer-nav__link = link_to 'Оборудование', contacts_path
         ul.footer-nav__list
           li.footer-nav__item
-            a.footer-nav__link href="#"  Сертификаты и дипломы
+            .footer-nav__link = link_to 'Сертификаты и Дипломы', contacts_path
           li.footer-nav__item
-            a.footer-nav__link href="#"  Отзывы пациентов
+            .footer-nav__link = link_to 'Отзывы пациентов', contacts_path
           li.footer-nav__item
-            a.footer-nav__link href="#"  Стерилизация
+            .footer-nav__link = link_to 'Стерилизация', contacts_path
       .footer-adr
         address.footer-adr__item
-          | Коломяжский проспект, 20 ст.м.«Пионерская»
-          br
-          | тел.:
-          a href="tel:+78123011040"  +7 (812) 301-10-40
+          div Коломяжский проспект, 20
+          div ст.м.«Пионерская»
+          = link_to 'Тел.:+7 (812) 301-10-40', 'tel:+78123011040'
         address.footer-adr__item
-          | Коллонтай ул., 17, корпус 2 ст.м.«Проспект Большевиков»
-          br
-          | тел.:
-          a href="tel:+78125748345"  +7 (812) 574-83-45
+          div Коллонтай ул., 17, корпус 2
+          div  ст.м.«Проспект Большевиков»
+          = link_to 'Тел.:+7 (812) 574-83-45', 'tel:+78125748345'
         address.footer-adr__item
-          | Проспект Народного Ополчения, 10
-          br
-          | ст.м.«Ленинский проспект»
-          br
-          | тел.:
-          a href="tel:+78126204020"  +7 (812) 620-40-20
+          div Проспект Народного Ополчения, 10
+          div ст.м.«Ленинский проспект»
+          = link_to 'Тел.:+7 (812) 620-40-20', 'tel:+78126204020'
   .footer__copy
     .inner
       .social.footer__social
@@ -49,4 +44,4 @@ footer.footer
           span.icon.icon-vk
         a.social__item href=""
           span.icon.icon-ok
-      |© 2004–2016 «Клиника Доброго Стоматолога»
+      div © 2004–2016 «Клиника Доброго Стоматолога»

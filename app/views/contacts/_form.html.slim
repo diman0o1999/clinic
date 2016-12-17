@@ -8,10 +8,10 @@ p
             li = message
     .form-inline
       .form-gr
-        = f.text_field :name, :required => true, :placeholder => "Фамилия Имя Отчество*"
+        = f.text_field :name, :required => true, :placeholder => "Фамилия Имя Отчество*", :value => "#{@name}"
       .form-gr-2
-        = f.telephone_field :telephone, :required => true, :placeholder => "Телефон*"
+        = f.telephone_field :telephone, :required => true, :placeholder => "Телефон*", :value => "#{@telephone}"
       .form-gr-3
         = f.submit("ЗАПИСАТЬСЯ")
       .form-gr-4
-        = f.hidden_field :filial
+        = f.hidden_field :filial, :value => "#{@filial}"

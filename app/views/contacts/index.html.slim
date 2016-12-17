@@ -9,38 +9,14 @@ section.page.section
           a data-toggle="tab" href="#panel#{index+1}" = filial.metro
 
       .tab-content
-        #panel1.tab-pane.fade.in.active
-          .form-gr
-            p Адрес: Коломяжский проспект, 20
-            p = link_to 'Тел.: +7 (812) 301-10-40', 'tel:+78123011040'
-          .form-gr
-            p с 09:00 до 21:00
-            p без выходных
-          /форма
-          = render 'contacts/form'
-
-          script charset="utf-8" src="https://api-maps.yandex.ru/services/constructor/1.0/js/?sid=10BXC9OeNeLviWnmCBks4UcJP3KpMbRg&width=100%&height=300&lang=ru_RU&sourceType=constructor" type="text/javascript"
-
-        #panel2.tab-pane.fade
-          .form-gr
-            p Адрес: улица Коллонтай 17, корпус 2
-            p = link_to 'Тел.: +7 (812) 574-83-45', 'tel:+78125748345'
-          .form-gr
-            p с 09:00 до 21:00
-            p без выходных
-          /форма
-          = render 'contacts/form'
-
-          script charset="utf-8" src="https://api-maps.yandex.ru/services/constructor/1.0/js/?sid=HcmxgpJBTuT-FY5amHsTxtWQLRBLuD1c&width=100%&height=300&lang=ru_RU&sourceType=constructor" type="text/javascript"
-
-        #panel3.tab-pane.fade
-          .form-gr
-            p Адрес: проспект Народного Ополчения, 10
-            p = link_to 'Тел.: +7 (812) 620-40-2', 'tel:+78126204020'
-          .form-gr
-            p с 09:00 до 21:00
-            p без выходных
-          /форма
-          = render 'contacts/form'
-
-          script charset="utf-8" src="https://api-maps.yandex.ru/services/constructor/1.0/js/?sid=kGp764s8WtHzyff6_fa_aUjejM269V9A&width=100%&height=300&lang=ru_RU&sourceType=constructor" type="text/javascript"
+        - @filials.each_with_index do |filial, index|
+          .tab-pane.fade.in id="panel#{index+1}"
+            .form-gr
+              p = filial.address
+              p = link_to 'Тел.:' "#{filial.telephone_full}", 'tel:'"#{filial.telephone}"
+            .form-gr
+              p = filial.time_work
+              p = filial.day_work
+            /форма
+            = render 'contacts/form'
+            script charset="utf-8" src="#{filial.map}" type="text/javascript"

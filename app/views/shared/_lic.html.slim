@@ -1,15 +1,9 @@
-section.lic
-  .inner
-    h2.title Лицензии
-    .lic__list.swiper-container
-      .swiper-wrapper
-        .lic__list-item.swiper-slide
-          img alt="" src="assets/pictures/02s_3.jpg" /
-        .lic__list-item.swiper-slide
-          img alt="" src="assets/pictures/01s_1.jpg" /
-        .lic__list-item.swiper-slide
-          img alt="" src="assets/pictures/03s_3.jpg" /
-      .swiper-button-next.lic__nav
-      .swiper-button-prev.lic__nav
-    .btn-wrap
-      a.btn.btn_theme_bordered.btn_size_m href="#"  Дипломы и сертификаты
+.container
+  h2.title Лицензии
+  .row
+    - @images_lic.each do |image|
+      .col-md-4
+        /отсекаем по слешу последнюю часть - т.е. название самого файла
+        = image_tag "pictures/lic/#{image.split('/').last}"
+  .btn-wrap
+    a.btn.btn_theme_bordered.btn_size_m href="#"  Дипломы и сертификаты

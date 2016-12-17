@@ -9,7 +9,10 @@ class FormsController < ApplicationController
     if @form.save
       redirect_to contacts_url
     else
-      render "contacts/index"
+      @name = params[:form][:name]
+      @telephone = params[:form][:telephone]
+      @filial = params[:form][:filial]
+      render 'contacts/index'
     end
   end
 

@@ -22,8 +22,10 @@ ActiveRecord::Schema.define(version: 20161216115508) do
     t.string   "address"
     t.string   "time_work"
     t.string   "day_work"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.string   "telephone_full"
+    t.string   "map"
   end
 
   create_table "forms", force: :cascade do |t|

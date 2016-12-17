@@ -1,16 +1,10 @@
 #carousel-example-generic.carousel.slide data-ride="carousel"
   .inner
     .carousel-inner role="listbox"
-      .item.active
-        img alt="" src="assets/pictures/act_01.jpg" /
-      .item
-        img alt="" src="assets/pictures/act_02.jpg" /
-      .item
-        img alt="" src="assets/pictures/act_03.jpg" /
-      .item
-        img alt="" src="assets/pictures/act_04_2.jpg" /
-      .item
-        img alt="" src="assets/pictures/act_5.jpg" /
+      - @images_slider.each do |image|
+        .item
+          /отсекаем по слешу последнюю часть - т.е. название самого файла
+          = image_tag "pictures/slider_main/#{image.split('/').last}"
     a.left.carousel-control data-slide="prev" href="#carousel-example-generic" role="button"
     a.right.carousel-control data-slide="next" href="#carousel-example-generic" role="button"
 
