@@ -6,4 +6,4 @@
         /отсекаем по слешу последнюю часть - т.е. название самого файла
         = image_tag "pictures/lic/#{image.split('/').last}"
   .btn-wrap
-    a.btn.btn_theme_bordered.btn_size_m href="#"  Дипломы и сертификаты
+    .btn.btn_theme_bordered.btn_size_m = link_to 'Сертификаты и Дипломы', diploms_path

@@ -10,10 +10,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161216115508) do
+ActiveRecord::Schema.define(version: 20161220210901) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "departaments", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "diploms", force: :cascade do |t|
+    t.string   "file"
+    t.integer  "medic_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "filials", force: :cascade do |t|
     t.string   "name"
@@ -31,9 +44,33 @@ ActiveRecord::Schema.define(version: 20161216115508) do
   create_table "forms", force: :cascade do |t|
     t.string   "name"
     t.bigint   "telephone"
-    t.string   "filial"
+    t.integer  "filial_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "medics", force: :cascade do |t|
+    t.string   "name"
+    t.string   "surname"
+    t.string   "patronymic"
+    t.string   "daywork"
+    t.string   "post"
+    t.string   "foto"
+    t.integer  "filial_id"
+    t.integer  "departament_id"
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+    t.string   "about"
+    t.integer  "raiting",        default: 0
+  end
+
+  create_table "medics_filials", id: false, force: :cascade do |t|
+    t.integer  "medic"
+    t.integer  "filial"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["filial"], name: "index_medics_filials_on_filial", using: :btree
+    t.index ["medic"], name: "index_medics_filials_on_medic", using: :btree
   end
 
 end

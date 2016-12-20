@@ -6,31 +6,24 @@ footer.footer
       .footer-nav
         ul.footer-nav__list
           li.footer-nav__item
-            .footer-nav__link = link_to 'О компании', contacts_path
+            .footer-nav__link = link_to 'О компании', abouts_path
           li.footer-nav__item
             .footer-nav__link = link_to 'Наши врачи', contacts_path
           li.footer-nav__item
-            .footer-nav__link = link_to 'Оборудование', contacts_path
+            .footer-nav__link = link_to 'Оборудование', equips_path
         ul.footer-nav__list
           li.footer-nav__item
-            .footer-nav__link = link_to 'Сертификаты и Дипломы', contacts_path
+            .footer-nav__link = link_to 'Сертификаты и Дипломы', diploms_path
           li.footer-nav__item
             .footer-nav__link = link_to 'Отзывы пациентов', contacts_path
           li.footer-nav__item
-            .footer-nav__link = link_to 'Стерилизация', contacts_path
+            .footer-nav__link = link_to 'Вопросы', contacts_path
       .footer-adr
-        address.footer-adr__item
-          div Коломяжский проспект, 20
-          div ст.м.«Пионерская»
-          = link_to 'Тел.:+7 (812) 301-10-40', 'tel:+78123011040'
-        address.footer-adr__item
-          div Коллонтай ул., 17, корпус 2
-          div  ст.м.«Проспект Большевиков»
-          = link_to 'Тел.:+7 (812) 574-83-45', 'tel:+78125748345'
-        address.footer-adr__item
-          div Проспект Народного Ополчения, 10
-          div ст.м.«Ленинский проспект»
-          = link_to 'Тел.:+7 (812) 620-40-20', 'tel:+78126204020'
+        - @filials.each do |filial|
+          address.footer-adr__item
+            div = filial.address
+            div = filial.metro
+            = link_to 'Тел.:' "#{filial.telephone_full}", 'tel:'"#{filial.telephone}"
   .footer__copy
     .inner
       .social.footer__social

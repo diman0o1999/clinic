@@ -18,30 +18,19 @@
             .nav__dropdown
               ul.nav__dropdown-list
                 li.nav__dropdown-item
-                  .nav__link = link_to 'Начало', contacts_path
-                li.nav__dropdown-item
                   .nav__link
-                    span.nav__link-text = link_to 'О компании', contacts_path
+                    span.nav__link-text = link_to 'О компании', abouts_path
                 li.nav__dropdown-item
                   .nav__link
                     span.nav__link-text = link_to 'Наши врачи', contacts_path
                 li.nav__dropdown-item
-                  .nav__link = link_to 'Оборудование', contacts_path
+                  .nav__link = link_to 'Оборудование', equips_path
                 li.nav__dropdown-item
-                  .nav__link = link_to 'Стерилизация', contacts_path
+                  .nav__link = link_to 'Сертификаты', diploms_path
                 li.nav__dropdown-item
-                  .nav__link = link_to 'Сертификаты', contacts_path
-                li.nav__dropdown-item
-                  .nav__link = link_to 'Лицензии', contacts_path
-                li.nav__dropdown-item
-                  .nav__link = link_to 'Наши партнеры', contacts_path
+                  .nav__link = link_to 'Лицензии', licenses_path
                 li.nav__dropdown-item
                   .nav__link = link_to 'Отзывы пациентов', contacts_path
-                li.nav__dropdown-item
-                  .nav__link = link_to 'Записки стоматолога', contacts_path
-                li.nav__dropdown-item
-                  .nav__link
-                    span.nav__link-text = link_to 'Вакансии', contacts_path
           li.nav__item.nav__item_drop
             .nav__link.nav__link_drop
               span.nav__link-text = link_to 'Услуги', contacts_path
@@ -88,7 +77,7 @@
               span.nav__link-text = link_to 'Отзывы', contacts_path
           li.nav__item
             .nav__link
-              span.nav__link-text = link_to 'Акции', contacts_path
+              span.nav__link-text = link_to 'Акции', actions_path
           li.nav__item
             .nav__link
               span.nav__link-text = link_to 'Контакты', contacts_path

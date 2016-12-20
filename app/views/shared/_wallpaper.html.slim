@@ -1,44 +1,16 @@
 .tiser
   .inner
-    form.form.tiser__form action="/" method="post"
-      h3.form__title Записаться на прием
-      .form__row
-        .form__item
-          input.form__inp name="name" placeholder=("Фамилия Имя Отчество *") required="required" type="text" /
-      .form__row
-        .form__item.form__item_col-10
-          input.form__inp name="phone" placeholder=("Телефон *") required="" type="tel" /
-        .form__item.form__item_col-8
-          select.form__sel name="fil"
-            option value="3"  Ленинский Проспект
-            option value="2"  Проспект Большевиков
-            option value="1"  Пионерская
-      .form__row.form__row_sbm
-        .form__item.form__item_align_right
-          input.btn.btn_size_s.form__sbm name="in" type="submit" value="ЗАПИСАТЬСЯ" /
+    .form.tiser__form
+      /форма
+      = render 'main/form-up'
+      .clear
+
       .tiser-place
-        .tiser-place__item
-          h3.tiser-place__title станция метро Пионерская
-          address.tiser-place__adr Коломяжский пр., 20
-          .tiser-place__meta
-            a href="tel:+78123011040"  Тел.: +7 (812) 301-10-40
-          .tiser-place__meta с 09:00 до 21:00
-          .tiser-place__meta без выходных.
-        .tiser-place__item
-          h3.tiser-place__title станция метро Проспект Большевиков
-          address.tiser-place__adr ул. Коллонтай 17, корпус 2
-          .tiser-place__meta
-            a href="tel:+78125748345"  Тел.: +7 (812) 574-83-45
-          .tiser-place__meta с 09:00 до 21:00
-          .tiser-place__meta без выходных.
-        .tiser-place__item
-          h3.tiser-place__title станция метро Ленинский проспект
-          address.tiser-place__adr пр. Народного Ополчения, 10
-          .tiser-place__meta
-            a href="tel:+78126204020"  Тел.: +7 (812) 620-40-20
-          .tiser-place__meta с 09:00 до 21:00
-          .tiser-place__meta без выходных.
-    .tiser__signup
-      a.tiser__phone href="tel:+78124260000"  (812) 426-0000
-      .tiser__btn-wrap
-        a.btn.btn_size_s.tiser__signup-btn.modal-call href="#modalForm"  ЗАПИСАТЬСЯ
+        - @filials.each_with_index do |filial|
+          .tiser-place__item
+            h3.tiser-place__title = filial.metro
+            address.tiser-place__adr = filial.address
+            .tiser-place__meta
+              = link_to 'Тел.:' "#{filial.telephone_full}", 'tel:'"#{filial.telephone}"
+            .tiser-place__meta = filial.time_work
+            .tiser-place__meta = filial.day_work

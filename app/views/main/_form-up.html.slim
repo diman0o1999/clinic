@@ -1,0 +1,15 @@
+= form_for @form, :remote => true do |f|
+  - if @form.errors.any?
+    #error_explanation
+      h2 = "#{pluralize(@form.errors.count, "error")} :прежде чем отправить заявку, заполните поля:"
+      ul
+        - @form.errors.full_messages.each do |message|
+          li = message
+  .form-gr-main
+    = f.text_field :name, :required => true, :placeholder => "Фамилия Имя Отчество*", :minlength => 4, :value => "#{@name}"
+  .form-gr-main-2
+    = f.telephone_field :telephone, :required => true, :placeholder => "Телефон*", :minlength => 5, :value => "#{@telephone}"
+  .form-gr-main-2
+    = f.select :filial_id, options_from_collection_for_select(@filials, :id, :name)
+  .form-gr-main-3
+    = f.submit("ЗАПИСАТЬСЯ")

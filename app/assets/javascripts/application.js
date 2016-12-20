@@ -15,4 +15,5 @@
 //require turbolinks
 //= require bootstrap
 //= require my
+//= require fotorama
 //= require_tree .

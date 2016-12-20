@@ -3,7 +3,7 @@ class Forms < ActiveRecord::Migration[5.0]
     create_table :forms do |t|
       t.string :name
       t.integer :telephone, limit: 8
-      t.string :filial
+      t.integer :filial_id
 
       t.timestamps
 

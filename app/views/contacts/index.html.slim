@@ -1,5 +1,7 @@
+- @title = "Контакты"
 section.page.section
   .inner
+    #new_article
     h2.title.title_for_page Клиника Доброго Стоматолога
     p.page__desc Уважаемые клиенты, Вы можете записаться на прием в одном из отделений «Клиники Доброго Стоматолога». Укажите Ваш телефон и в ближайшее время с Вами свяжется наш администратор и согласует удобные для Вас дату и время приема.
 
@@ -19,4 +21,6 @@ section.page.section
               p = filial.day_work
             /форма
             = render 'contacts/form'
+            .hidden
+              = filial.id
             script charset="utf-8" src="#{filial.map}" type="text/javascript"

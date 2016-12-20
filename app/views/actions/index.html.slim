@@ -1,0 +1,6 @@
+- @title = "Акции"
+h2.title.title_for_page.about__title style=("text-align: center;")  Акции
+.fotorama data-nav="thumbs"
+  - @images_action.each do |image|
+    /отсекаем по слешу последнюю часть - т.е. название самого файла
+    = image_tag "pictures/slider_main/#{image.split('/').last}"

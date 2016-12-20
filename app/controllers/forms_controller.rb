@@ -6,19 +6,20 @@ class FormsController < ApplicationController
     @filials = Filial.all
     @form = Form.new(form_params)
 
-    if @form.save
-      redirect_to contacts_url
-    else
-      @name = params[:form][:name]
-      @telephone = params[:form][:telephone]
-      @filial = params[:form][:filial]
-      render 'contacts/index'
+    respond_to do |format|
+      if @form.save
+        format.html { redirect_to contacts_url }
+        format.json { render json: @form }
+      else
+        format.html { render "contacts/index" }
+        format.json { render json: @form.errors.full_messages, status: :unprocessable_entity }
+      end
     end
   end
 
   private
   def form_params
-    params.require(:form).permit(:name, :telephone, :filial)
+    params.require(:form).permit(:name, :telephone, :filial_id)
   end
 
 end

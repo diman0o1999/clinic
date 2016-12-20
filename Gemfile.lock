@@ -65,6 +65,8 @@ GEM
     ffi (1.9.14)
     font-awesome-rails (4.7.0.0)
       railties (>= 3.2, < 5.1)
+    fotoramajs (4.6.4)
+      sprockets (>= 2)
     globalid (0.3.7)
       activesupport (>= 4.1.0)
     haml (4.0.7)
@@ -226,6 +228,7 @@ DEPENDENCIES
   byebug
   coffee-rails (~> 4.2)
   font-awesome-rails
+  fotoramajs
   haml-rails
   jbuilder (~> 2.5)
   jquery-rails
