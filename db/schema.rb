@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161220210901) do
+ActiveRecord::Schema.define(version: 20161223214058) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -19,6 +19,15 @@ ActiveRecord::Schema.define(version: 20161220210901) do
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "departaments_medics", id: false, force: :cascade do |t|
+    t.integer  "medic_id"
+    t.integer  "departament_id"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.index ["departament_id"], name: "index_departaments_medics_on_departament_id", using: :btree
+    t.index ["medic_id"], name: "index_departaments_medics_on_medic_id", using: :btree
   end
 
   create_table "diploms", force: :cascade do |t|
@@ -41,6 +50,15 @@ ActiveRecord::Schema.define(version: 20161220210901) do
     t.string   "map"
   end
 
+  create_table "filials_medics", id: false, force: :cascade do |t|
+    t.integer  "medic_id"
+    t.integer  "filial_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["filial_id"], name: "index_filials_medics_on_filial_id", using: :btree
+    t.index ["medic_id"], name: "index_filials_medics_on_medic_id", using: :btree
+  end
+
   create_table "forms", force: :cascade do |t|
     t.string   "name"
     t.bigint   "telephone"
@@ -54,23 +72,14 @@ ActiveRecord::Schema.define(version: 20161220210901) do
     t.string   "surname"
     t.string   "patronymic"
     t.string   "daywork"
-    t.string   "post"
+    t.string   "post1"
     t.string   "foto"
-    t.integer  "filial_id"
-    t.integer  "departament_id"
-    t.datetime "created_at",                 null: false
-    t.datetime "updated_at",                 null: false
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
     t.string   "about"
-    t.integer  "raiting",        default: 0
-  end
-
-  create_table "medics_filials", id: false, force: :cascade do |t|
-    t.integer  "medic"
-    t.integer  "filial"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["filial"], name: "index_medics_filials_on_filial", using: :btree
-    t.index ["medic"], name: "index_medics_filials_on_medic", using: :btree
+    t.integer  "raiting",    default: 0
+    t.string   "post2"
+    t.string   "post3"
   end
 
 end

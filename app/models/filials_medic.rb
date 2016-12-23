@@ -1,2 +1,2 @@
-class Filial_Medic < ApplicationRecord
+class Filials_Medic < ApplicationRecord
 end

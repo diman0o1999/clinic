@@ -1,0 +1,35 @@
+- @title = "Наши врачи"
+
+section.page.section
+  .inner
+    h2.title.title_for_page Наши врачи
+    p.tagline Главное в медицине — это личность врача!
+    p.page__desc Пусть будет хоть самое дорогое и современное оборудование, но если доктор за ним думает только о себе, своей зарплате и пациент для него всего лишь одна из трудовых единиц, у такого доктора лечиться не только неприятно, но и опасно. В нашей клинике мы собрали специалистов, которые живут своей работой, горят ею, сострадают и заботятся о своих пациентах. Наши доктора с самого начала стремились к самому лучшему, современному и надежному. Это настоящий коллектив единомышленников, сплоченных многолетней успешной совместной работой.
+
+
+    ul.nav.nav-tabs.nav-justified
+      - @filials.each_with_index do |filial, index|
+        li
+          a data-toggle="tab" href="#panel#{index+1}" = filial.metro
+          .hidden
+            = filial.id
+
+      .tab-content
+        - @filials.each_with_index do |filial, index|
+          .tab-pane.fade.in id="panel#{index+1}"
+            .form-gr
+              p = filial.address
+              p = link_to 'Тел.:' "#{filial.telephone_full}", 'tel:' "#{filial.telephone}"
+            .form-gr
+              p = filial.time_work
+              p = filial.day_work
+            /форма
+            = render 'forms/form'
+
+        #list-medic
+
+  .page__remark
+    .inner
+      | Если у Вас возникли вопросы, Вы можете
+      a href="#"  задать
+      |  их и получить квалифицированную консультацию профессионалов «Клиники Доброго Стоматолога».

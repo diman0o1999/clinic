@@ -4,11 +4,14 @@ class Medics < ActiveRecord::Migration[5.0]
       t.string :name
       t.string :surname
       t.string :patronymic
-      t.string :daywork
+      t.string :daywork1
+      t.string :daywork2
+      t.string :daywork3
       t.string :about
-      t.string :post
+      t.string :post1
+      t.string :post2
+      t.string :post3
       t.string :foto
-      t.integer :departament_id
       t.integer :raiting
 
       t.timestamps

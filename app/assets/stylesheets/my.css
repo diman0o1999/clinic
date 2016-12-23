@@ -170,21 +170,47 @@ address {
     margin-bottom: 100px;
 }
 #select-medic{
-    width: 30%;
+    width: 50%;
     margin: auto;
 }
 #select-medic select{
-    background-color: #4e9c84;
-    color: white;
     font-size: 18px;
-    border: 1px solid #4e9c84;
+    margin-bottom: 90px;
 }
-
-
-
-
-
-
+.carousel-diplom{
+    position: relative;
+}
+.diplom-fa{
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    height: 30%;
+    width: 50%;
+    margin: -15% 0 0 -25%;
+    color: #4e9c84;
+}
+.carousel-inner > .item > img{
+    display: block;
+    max-width: 100%;
+    height: auto;
+    line-height: 1;
+    margin: auto;
+}
+.diplom{
+    margin-bottom: 90px;
+    height: 800px
+}
+.carousel-control.color{
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0.0001) 0%, rgba(255, 255, 255, 0.5) 100%);
+}
+.error{
+    color: red;
+    font-size: 18px;
+}
+.success{
+    color: green;
+    font-size: 18px;
+}
 
 
 
@@ -4106,6 +4132,7 @@ img.mfp-img {
 .doctor__name-f {
     display: block;
     text-transform: uppercase;
+    font-weight: bold;
 }
 .doctor__meta {
     margin-top: 6px;
@@ -4118,7 +4145,7 @@ img.mfp-img {
 }
 .doctor__desc {
     margin-bottom: 20px;
-    font-size: 9px;
+    font-size: 11px;
     color: #999;
     float: right;
     margin-top: 6px;
@@ -4961,6 +4988,7 @@ img.mfp-img {
         float: none;
         margin-top: 0;
         clear: both;
+        padding-top: 10px;
     }
     .contact__col {
         display: inline-block;

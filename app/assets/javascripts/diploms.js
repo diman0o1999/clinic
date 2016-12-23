@@ -1,15 +1,15 @@
 $(document).ready(function() {
 
-    $("select")
+    $("#select-medic select")
         .change(function () {
             $.post(
                 "/diploms/" + ($('select').val()),
                 function (data) {
-                    box = $('.fotorama');
+                    var box = $('.diplom');
                     box.empty();
                     data.forEach (function(file){
-                        box.append("<img src=/assets/pictures/diploma/" + file + ">" );
-                        //$($('.item')[0]).addClass('active')
+                        box.append("<div class = 'item'><img src=/assets/pictures/diploma/" + file + "></div>" );
+                        $($('.item')[0]).addClass('active')
                     });
                 }
             )

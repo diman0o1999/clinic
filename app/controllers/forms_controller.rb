@@ -8,11 +8,11 @@ class FormsController < ApplicationController
 
     respond_to do |format|
       if @form.save
-        format.html { redirect_to contacts_url }
-        format.json { render json: @form }
+        #format.html { redirect_to contacts_url }
+        format.json { render json: {:form => @form} }
       else
-        format.html { render "contacts/index" }
-        format.json { render json: @form.errors.full_messages, status: :unprocessable_entity }
+        #format.html { render @form }
+        format.json { render :json => @form.errors, :status => 422 }
       end
     end
   end

@@ -1,11 +1,14 @@
 - @title = "Дипломы и сертификаты"
 .inner
-h2.title.title_for_page.about__title style=("text-align: center;")  Выбор врача
-#select-medic = select_tag :medics, options_from_collection_for_select(@medics, :id, :name)
+  h2.title.title_for_page.about__title style=("text-align: center;")  Выбор врача
+  #select-medic = select_tag :medics, options_from_collection_for_select(@medics, :id, :name)
 
-.fotorama data-nav="thumbs"
+  #carousel-diplom.carousel.slide data-interval="false"
+    .carousel-inner.diplom role="listbox"
+    a.left.carousel-control.color data-slide="prev" href="#carousel-diplom" role="button"
+      i.diplom-fa.fa.fa-chevron-left.fa-3x aria-hidden="true"
+      span.sr-only Previous
+    a.right.carousel-control.color data-slide="next" href="#carousel-diplom" role="button"
+      i.diplom-fa.fa.fa-chevron-right.fa-3x aria-hidden="true"
+      span.sr-only Next
 
-/.fotorama data-nav="thumbs"
-  - @img_diploms.each do |image|
-    /отсекаем по слешу последнюю часть - т.е. название самого файла
-    = image_tag "pictures/diploma/#{image.file.split('/').last}"
