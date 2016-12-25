@@ -1,0 +1,19 @@
+- @title = "Наши цены"
+.inner
+  h2.title.title_for_page.price__title Стоимость услуг стоматологии
+  #accordion.panel-group
+    - @departaments.each_with_index do |departament, index|
+      .panel.panel-default
+        .hidden
+          = departament.id
+        .panel-heading
+          h4.panel-title
+            a data-parent="#accordion" data-toggle="collapse" href="#collapse#{index+1}" #{departament.name}
+        .panel-collapse.collapse id="collapse#{index+1}"
+          .panel-body
+            /.list-price id="price#{index+1}"
+            ul.toggler.price__toggler
+              li.toggler__item.toggler
+                .toggler__body
+                  .toggler__body-inner
+                    ul.price__list

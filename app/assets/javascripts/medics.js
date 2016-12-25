@@ -69,6 +69,9 @@ $(document).ready(function() {
                     if(num == 3){
                         daywork = file.daywork3;
                     }
+                    if(daywork == '') {
+                        daywork = "Не принимает в этом филиале";
+                    }
                     box.append(
                         "<article class='doctor__item'>"+
                             "<figure class='doctor__fig'><img src=/assets/pictures/doctors/" + file.foto + "></figure>" +

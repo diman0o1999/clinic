@@ -211,7 +211,9 @@ address {
     color: green;
     font-size: 18px;
 }
-
+.page__remark {
+    border-top: 1px solid #e0e0e0;
+}
 
 
 
