@@ -1,4 +1,28 @@
 .header-wrap
+
+
+  nav.nav
+    .inner
+      span.nav__btn
+        span.nav__btn-inner
+      .nav__wrap.up-menu
+        ul.nav__list
+
+          - if signed_in?
+            li.nav__item
+              .nav__link
+                span.nav__link-text.little = link_to 'Профиль', current_user
+            li.nav__item
+              .nav__link
+                span.nav__link-text.little = link_to 'Выйти', signout_path, method: "delete"
+          - else
+            li.nav__item
+              .nav__link
+                span.nav__link-text.little = link_to 'Регистрация', signup_path
+            li.nav__item
+              .nav__link
+                span.nav__link-text.little = link_to 'Войти', signin_path
+
   header.header
     .inner = link_to root_path
       .logo
@@ -19,12 +43,12 @@
               ul.nav__dropdown-list
                 li.nav__dropdown-item
                   .nav__link
-                    span.nav__link-text = link_to 'О компании', abouts_path
+                    span.nav__link-text = link_to 'О компании', about_path
                 li.nav__dropdown-item
                   .nav__link
                     span.nav__link-text = link_to 'Наши врачи', medics_path
                 li.nav__dropdown-item
-                  .nav__link = link_to 'Оборудование', equips_path
+                  .nav__link = link_to 'Оборудование', equip_path
                 li.nav__dropdown-item
                   .nav__link = link_to 'Сертификаты', diploms_path
                 li.nav__dropdown-item
@@ -78,7 +102,7 @@
               span.nav__link-text = link_to 'Отзывы', contacts_path
           li.nav__item
             .nav__link
-              span.nav__link-text = link_to 'Акции', actions_path
+              span.nav__link-text = link_to 'Акции', action_path
           li.nav__item
             .nav__link
               span.nav__link-text = link_to 'Контакты', contacts_path

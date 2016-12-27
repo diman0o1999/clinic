@@ -6,11 +6,11 @@ footer.footer
       .footer-nav
         ul.footer-nav__list
           li.footer-nav__item
-            .footer-nav__link = link_to 'О компании', abouts_path
+            .footer-nav__link = link_to 'О компании', about_path
           li.footer-nav__item
             .footer-nav__link = link_to 'Наши врачи', medics_path
           li.footer-nav__item
-            .footer-nav__link = link_to 'Оборудование', equips_path
+            .footer-nav__link = link_to 'Оборудование', equip_path
         ul.footer-nav__list
           li.footer-nav__item
             .footer-nav__link = link_to 'Сертификаты и Дипломы', diploms_path
@@ -19,11 +19,18 @@ footer.footer
           li.footer-nav__item
             .footer-nav__link = link_to 'Вопросы', contacts_path
       .footer-adr
-        - @filials.each do |filial|
-          address.footer-adr__item
-            div = filial.address
-            div = filial.metro
-            = link_to 'Тел.:' "#{filial.telephone_full}", 'tel:'"#{filial.telephone}"
+        address.footer-adr__item
+          div Коломяжский проспект, 20
+          div ст.метро «Пионерская»
+          = link_to 'Тел.: +7 (812) 301-10-40', 'tel:78123011040'
+        address.footer-adr__item
+          div улица Коллонтай 17, корпус 2
+          div ст.метро «Проспект Большевиков»
+          = link_to 'Тел.: +7 (812) 574-83-45', 'tel:78125748345'
+        address.footer-adr__item
+          div проспект Народного Ополчения, 10
+          div ст.метро «Ленинский проспект»
+          = link_to 'Тел.: +7 (812) 620-40-20', 'tel: 78126204020'
   .footer__copy
     .inner
       .social.footer__social

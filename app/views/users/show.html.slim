@@ -1,0 +1,12 @@
+- @title = "Страница пользователя:" "#{@user.name}" + " " + "#{@user.surname}"
+.inner
+  - if @role.id == 1
+    div #{@user.name} #{@user.surname} вы врач
+    p = link_to "Обновить", edit_user_path
+  - elsif @role.id == 2
+    div #{@user.name} #{@user.surname} вы пациент
+    p = link_to "Обновить", edit_user_path
+  - else current_user.admin?
+    div #{@user.name} #{@user.surname} походу ты админ
+
+

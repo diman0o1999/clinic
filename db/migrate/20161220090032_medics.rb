@@ -1,9 +1,7 @@
 class Medics < ActiveRecord::Migration[5.0]
   def change
     create_table :medics do |t|
-      t.string :name
-      t.string :surname
-      t.string :patronymic
+      t.integer :user_id
       t.string :daywork1
       t.string :daywork2
       t.string :daywork3

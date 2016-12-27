@@ -1,6 +1,5 @@
 class PricesController < ApplicationController
   def index
-    @filials = Filial.all
     #только те отделения, у которых есть прайс
     @departaments = Departament.select("id","name").distinct.joins(:price).order(:id)
   end

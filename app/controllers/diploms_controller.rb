@@ -1,8 +1,7 @@
 class DiplomsController < ApplicationController
   def index
-    @filials = Filial.all
     #только те врачи, у которых есть сертификаты
-    @medics = Medic.select("id","name").distinct.joins(:diploms).order(:id)
+    @medics = Medic.joins(:user, :diploms).distinct.order(:id).pluck(:name, :id)
   end
 
   def select_diploms

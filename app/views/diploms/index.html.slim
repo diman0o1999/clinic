@@ -1,7 +1,7 @@
 - @title = "Дипломы и сертификаты"
 .inner
   h2.title.title_for_page.about__title style=("text-align: center;")  Выбор врача
-  #select-medic = select_tag :medics, options_from_collection_for_select(@medics, :id, :name)
+  #select-medic = select_tag :medics, options_for_select(@medics)
 
   #carousel-diplom.carousel.slide data-interval="false"
     .carousel-inner.diplom role="listbox"

@@ -6,7 +6,7 @@
         - @form.errors.full_messages.each do |message|
           li = message
   .form-gr-main
-    = f.text_field :name, :required => true, :placeholder => "Фамилия Имя Отчество*", :minlength => 4, :value => "#{@name}"
+    = f.text_field :name, :required => true, :placeholder => "Фамилия Имя Отчество*", :minlength => 3, :value => "#{@name}"
   .form-gr-main-2
     = f.telephone_field :telephone, :required => true, :placeholder => "Телефон*", :minlength => 5, :value => "#{@telephone}"
   .form-gr-main-2

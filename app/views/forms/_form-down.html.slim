@@ -7,7 +7,7 @@
           li = message
   .form-inline
     .form-gr-main-down
-      = f.text_field :name, :required => true, :placeholder => "Фамилия Имя Отчество*", :minlength => 4, :value => "#{@name}"
+      = f.text_field :name, :required => true, :placeholder => "Фамилия Имя Отчество*", :minlength => 3, :value => "#{@name}"
     .form-gr-main-down
       = f.telephone_field :telephone, :required => true, :placeholder => "Телефон*", :minlength => 5, :value => "#{@telephone}"
     .form-gr-main-down-2

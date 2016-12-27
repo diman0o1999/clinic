@@ -3,15 +3,12 @@ class FormsController < ApplicationController
     redirect_to contacts_url
   end
   def create
-    @filials = Filial.all
     @form = Form.new(form_params)
 
     respond_to do |format|
       if @form.save
-        #format.html { redirect_to contacts_url }
         format.json { render json: {:form => @form} }
       else
-        #format.html { render @form }
         format.json { render :json => @form.errors, :status => 422 }
       end
     end

@@ -50,6 +50,16 @@ Departament.create(
     ]
 )
 
+Role.delete_all
+Role.reset_pk_sequence
+Role.create(
+    [
+        {name: 'Врач'},
+        {name: 'Пациент'},
+        {name: 'Админ'}
+    ]
+)
+
 Price.delete_all
 Price.reset_pk_sequence
 Price.create(
@@ -353,14 +363,331 @@ Departaments_Medic.create(
     ]
 )
 
+Patient.delete_all
+Patient.reset_pk_sequence
+Patient.create(
+    [
+        {
+            user_id: 32,
+            tel_number: 79110810557,
+            foto: ''
+        }
+    ]
+)
+
+
+User.delete_all
+User.reset_pk_sequence
+User.create(
+    [
+        {
+            name: 'Эмиль',
+            surname: 'Агаджанян',
+            patronymic: 'Гургенович',
+            email: 'test@test.com',
+            password: 'qwerty',
+            password_confirmation: 'qwerty',
+            role_id: 1
+        },
+        {
+            name: 'Светлана',
+            surname: 'Жигунова',
+            patronymic: 'Юрьевна',
+            email: 'test2@test.com',
+            password: 'qwerty',
+            password_confirmation: 'qwerty',
+            role_id: 1
+        },
+        {
+            name: 'Анна',
+            surname: 'Дубинская',
+            patronymic: 'Яковлевна',
+            email: 'test3@test.com',
+            password: 'qwerty',
+            password_confirmation: 'qwerty',
+            role_id: 1
+        },
+        {
+            name: 'Татьяна',
+            surname: 'Окунева',
+            patronymic: 'Юрьевна',
+            email: 'test4@test.com',
+            password: 'qwerty',
+            password_confirmation: 'qwerty',
+            role_id: 1
+        },
+        {
+            name: 'Вера',
+            surname: 'Иванина',
+            patronymic: 'Рашидовна',
+            email: 'test5@test.com',
+            password: 'qwerty',
+            password_confirmation: 'qwerty',
+            role_id: 1
+        },
+        {
+            name: 'Алла',
+            surname: 'Тиханова',
+            patronymic: 'Михайловна',
+            email: 'test6@test.com',
+            password: 'qwerty',
+            password_confirmation: 'qwerty',
+            role_id: 1
+        },
+        {
+            name: 'Татьяна',
+            surname: 'Царькова',
+            patronymic: 'Владимировна',
+            email: 'test7@test.com',
+            password: 'qwerty',
+            password_confirmation: 'qwerty',
+            role_id: 1
+        },
+        {
+            name: 'Ольга',
+            surname: 'Филина',
+            patronymic: 'Викторовна',
+            email: 'test8@test.com',
+            password: 'qwerty',
+            password_confirmation: 'qwerty',
+            role_id: 1
+        },
+        {
+            name: 'Павел',
+            surname: 'Окунев',
+            patronymic: 'Юрьевич',
+            email: 'test9@test.com',
+            password: 'qwerty',
+            password_confirmation: 'qwerty',
+            role_id: 1
+        },
+        {
+            name: 'Виталий',
+            surname: 'Конищев',
+            patronymic: 'Константинович',
+            email: 'test10@test.com',
+            password: 'qwerty',
+            password_confirmation: 'qwerty',
+            role_id: 1
+        },
+        {
+            name: 'Александра',
+            surname: 'Щеникова',
+            patronymic: 'Евгеньевна',
+            email: 'test11@test.com',
+            password: 'qwerty',
+            password_confirmation: 'qwerty',
+            role_id: 1
+        },
+        {
+            name: 'Петр',
+            surname: 'Орлов',
+            patronymic: 'Николаевич',
+            email: 'test12@test.com',
+            password: 'qwerty',
+            password_confirmation: 'qwerty',
+            role_id: 1
+        },
+        {
+            name: 'Оксана',
+            surname: 'Батюкова',
+            patronymic: 'Ивановна',
+            email: 'test13@test.com',
+            password: 'qwerty',
+            password_confirmation: 'qwerty',
+            role_id: 1
+        },
+        {
+            name: 'Светлана',
+            surname: 'Белолюбская',
+            patronymic: 'Викторовна',
+            email: 'test14@test.com',
+            password: 'qwerty',
+            password_confirmation: 'qwerty',
+            role_id: 1
+        },
+        {
+            name: 'Нина',
+            surname: 'Животовская',
+            patronymic: 'Артуровна',
+            email: 'test15@test.com',
+            password: 'qwerty',
+            password_confirmation: 'qwerty',
+            role_id: 1
+        },
+        {
+            name: 'Ольга',
+            surname: 'Захарченко',
+            patronymic: 'Владимировна',
+            email: 'test16@test.com',
+            password: 'qwerty',
+            password_confirmation: 'qwerty',
+            role_id: 1
+        },
+        {
+            name: 'Елена',
+            surname: 'Комарова',
+            patronymic: 'Валерьевна',
+            email: 'test17@test.com',
+            password: 'qwerty',
+            password_confirmation: 'qwerty',
+            role_id: 1
+        },
+        {
+            name: 'Денис',
+            surname: 'Самсонов',
+            patronymic: 'Владимирович',
+            email: 'test18@test.com',
+            password: 'qwerty',
+            password_confirmation: 'qwerty',
+            role_id: 1
+        },
+        {
+            name: 'Константин',
+            surname: 'Калищук',
+            patronymic: 'Вячеславович',
+            email: 'test19@test.com',
+            password: 'qwerty',
+            password_confirmation: 'qwerty',
+            role_id: 1
+        },
+        {
+            name: 'Васо',
+            surname: 'Кобалия',
+            patronymic: 'Мерабович',
+            email: 'test20@test.com',
+            password: 'qwerty',
+            password_confirmation: 'qwerty',
+            role_id: 1
+        },
+        {
+            name: 'Анастасия',
+            surname: 'Голубева',
+            patronymic: 'Анатольевна',
+            email: 'test21@test.com',
+            password: 'qwerty',
+            password_confirmation: 'qwerty',
+            role_id: 1
+        },
+        {
+            name: 'Екатерина',
+            surname: 'Савинкина',
+            patronymic: 'Викторовна',
+            email: 'test22@test.com',
+            password: 'qwerty',
+            password_confirmation: 'qwerty',
+            role_id: 1
+        },
+        {
+            name: 'Михаил',
+            surname: 'Максимов',
+            patronymic: 'Михайлович',
+            email: 'test23@test.com',
+            password: 'qwerty',
+            password_confirmation: 'qwerty',
+            role_id: 1
+        },
+        {
+            name: 'Ольга',
+            surname: 'Оношко',
+            patronymic: 'Михайловна',
+            email: 'test24@test.com',
+            password: 'qwerty',
+            password_confirmation: 'qwerty',
+            role_id: 1
+        },
+        {
+            name: 'Дарина',
+            surname: 'Шашорина',
+            patronymic: 'Геннадьевна',
+            email: 'test25@test.com',
+            password: 'qwerty',
+            password_confirmation: 'qwerty',
+            role_id: 1
+        },
+        {
+            name: 'Хатиа',
+            surname: 'Шаматава',
+            patronymic: 'Отариевна',
+            email: 'test26@test.com',
+            password: 'qwerty',
+            password_confirmation: 'qwerty',
+            role_id: 1
+        },
+        {
+            name: 'Сергей',
+            surname: 'Сладков',
+            patronymic: 'Николаевич',
+            email: 'test27@test.com',
+            password: 'qwerty',
+            password_confirmation: 'qwerty',
+            role_id: 1
+        },
+        {
+            name: 'Анастасия',
+            surname: 'Петрашень',
+            patronymic: 'Викторовна',
+            email: 'test28@test.com',
+            password: 'qwerty',
+            password_confirmation: 'qwerty',
+            role_id: 1
+        },
+        {
+            name: 'Александра',
+            surname: 'Сапицкая',
+            patronymic: 'Игоревна',
+            email: 'test29@test.com',
+            password: 'qwerty',
+            password_confirmation: 'qwerty',
+            role_id: 1
+        },
+        {
+            name: 'Елена',
+            surname: 'Соколова',
+            patronymic: 'Борисовна',
+            email: 'test30@test.com',
+            password: 'qwerty',
+            password_confirmation: 'qwerty',
+            role_id: 1
+        },
+        {
+            name: 'Ирина',
+            surname: 'Листопад',
+            patronymic: 'Владимировна',
+            email: 'test31@test.com',
+            password: 'qwerty',
+            password_confirmation: 'qwerty',
+            role_id: 1
+        },
+        {
+            name: 'Денис',
+            surname: 'Рябченко',
+            patronymic: 'Михайлович',
+            email: 'test32@test.com',
+            password: 'qwerty',
+            password_confirmation: 'qwerty',
+            role_id: 3,
+            admin: true
+        },
+        {
+            name: 'Валерия',
+            surname: 'Рябченко',
+            patronymic: 'Игоревна',
+            email: 'test33@test.com',
+            password: 'qwerty',
+            password_confirmation: 'qwerty',
+            role_id: 2
+        },
+
+    ]
+)
+
 Medic.delete_all
 Medic.reset_pk_sequence
 Medic.create(
     [
         {
-             name: 'Эмиль',
-             surname: 'Агаджанян',
-             patronymic: 'Гургенович',
+             user_id: 1,
              daywork1: 'понедельник, четверг',
              daywork2: '',
              daywork3: '',
@@ -372,9 +699,7 @@ Medic.create(
              raiting: 0
         },
         {
-            name: 'Светалана',
-            surname: 'Жигунова',
-            patronymic: 'Юрьевна',
+            user_id: 2,
             daywork1: 'понедельник, четверг',
             daywork2: '',
             daywork3: '',
@@ -386,9 +711,7 @@ Medic.create(
             raiting: 0
         },
         {
-            name: 'Анна',
-            surname: 'Дубинская',
-            patronymic: 'Яковлевна',
+            user_id: 3,
             daywork1: 'понедельник, вторник, четверг',
             daywork2: '',
             daywork3: '',
@@ -400,9 +723,7 @@ Medic.create(
             raiting: 0
         },
         {
-            name: 'Татьяна',
-            surname: 'Окунева',
-            patronymic: 'Юрьевна',
+            user_id: 4,
             daywork1: 'среда, пятница',
             daywork2: 'вторник, четверг',
             daywork3: 'среда',
@@ -414,9 +735,7 @@ Medic.create(
             raiting: 0
         },
         {
-            name: 'Вера',
-            surname: 'Иванина',
-            patronymic: 'Рашидовна',
+            user_id: 5,
             daywork1: 'среда, воскресенье',
             daywork2: '',
             daywork3: '',
@@ -428,9 +747,7 @@ Medic.create(
             raiting: 0
         },
         {
-            name: 'Алла',
-            surname: 'Тиханова',
-            patronymic: 'Михайловна',
+            user_id: 6,
             daywork1: 'вторник, среда, пятница, суббота',
             daywork2: '',
             daywork3: '',
@@ -442,9 +759,7 @@ Medic.create(
             raiting: 0
         },
         {
-            name: 'Татьяна',
-            surname: 'Царькова',
-            patronymic: 'Владимировна',
+            user_id: 7,
             daywork1: 'вторник, пятница',
             daywork2: '',
             daywork3: '',
@@ -456,9 +771,7 @@ Medic.create(
             raiting: 0
         },
         {
-            name: 'Ольга',
-            surname: 'Филина',
-            patronymic: 'Викторовна',
+            user_id: 8,
             daywork1: 'среда, суббота',
             daywork2: '',
             daywork3: 'четверг, пятница, воскресенье',
@@ -470,9 +783,7 @@ Medic.create(
             raiting: 0
         },
         {
-            name: 'Павел',
-            surname: 'Окунев',
-            patronymic: 'Юрьевич',
+            user_id: 9,
             daywork1: 'вторник, четверг, пятница',
             daywork2: '',
             daywork3: 'среда, суббота',
@@ -484,9 +795,7 @@ Medic.create(
             raiting: 0
         },
         {
-            name: 'Виталий',
-            surname: 'Конищев',
-            patronymic: 'Константинович',
+            user_id: 10,
             daywork1: 'понедельник',
             daywork2: 'суббота',
             daywork3: 'среда, суббота',
@@ -498,9 +807,7 @@ Medic.create(
             raiting: 0
         },
         {
-            name: 'Александра',
-            surname: 'Щеникова',
-            patronymic: 'Евгеньевна',
+            user_id: 11,
             daywork1: 'вторник, пятница',
             daywork2: '',
             daywork3: '',
@@ -512,9 +819,7 @@ Medic.create(
             raiting: 0
         },
         {
-            name: 'Петр',
-            surname: 'Орлов',
-            patronymic: 'Николаевич',
+            user_id: 12,
             daywork1: 'вторник, среда, воскресенье',
             daywork2: '',
             daywork3: '',
@@ -526,9 +831,7 @@ Medic.create(
             raiting: 0
         },
         {
-            name: 'Оксана',
-            surname: 'Батюкова',
-            patronymic: 'Ивановна',
+            user_id: 13,
             daywork1: '',
             daywork2: 'понедельник, среда, пятница, воскресенье',
             daywork3: '',
@@ -540,9 +843,7 @@ Medic.create(
             raiting: 0
         },
         {
-            name: 'Светлана',
-            surname: 'Белолюбская',
-            patronymic: 'Викторовна',
+            user_id: 14,
             daywork1: '',
             daywork2: 'среда, четверг, суббота',
             daywork3: '',
@@ -554,9 +855,7 @@ Medic.create(
             raiting: 0
         },
         {
-            name: 'Нина',
-            surname: 'Животовская',
-            patronymic: 'Артуровна',
+            user_id: 15,
             daywork1: '',
             daywork2: 'понедельник, среда',
             daywork3: '',
@@ -568,9 +867,7 @@ Medic.create(
             raiting: 0
         },
         {
-            name: 'Ольга',
-            surname: 'Захарченко',
-            patronymic: 'Владимировна',
+            user_id: 16,
             daywork1: '',
             daywork2: 'вторник, среда, пятница, суббота',
             daywork3: '',
@@ -582,9 +879,7 @@ Medic.create(
             raiting: 0
         },
         {
-            name: 'Елена',
-            surname: 'Комарова',
-            patronymic: 'Валерьевна',
+            user_id: 17,
             daywork1: '',
             daywork2: 'понедельник, вторник, четверг, воскресенье',
             daywork3: '',
@@ -596,9 +891,7 @@ Medic.create(
             raiting: 0
         },
         {
-            name: 'Денис',
-            surname: 'Самсонов',
-            patronymic: 'Владимирович',
+            user_id: 18,
             daywork1: '',
             daywork2: 'понедельник, среда, четверг, воскресенье',
             daywork3: '',
@@ -610,9 +903,7 @@ Medic.create(
             raiting: 0
         },
         {
-            name: 'Константин',
-            surname: 'Калищук',
-            patronymic: 'Вячеславович',
+            user_id: 19,
             daywork1: '',
             daywork2: 'четверг',
             daywork3: '',
@@ -624,9 +915,7 @@ Medic.create(
             raiting: 0
         },
         {
-            name: 'Васо',
-            surname: 'Кобалия',
-            patronymic: 'Мерабович',
+            user_id: 20,
             daywork1: '',
             daywork2: 'понедельник, среда, четверг, суббота',
             daywork3: '',
@@ -638,9 +927,7 @@ Medic.create(
             raiting: 0
         },
         {
-            name: 'Анастасия',
-            surname: 'Голубева',
-            patronymic: 'Анатольевна',
+            user_id: 21,
             daywork1: '',
             daywork2: 'вторник, четверг, суббота',
             daywork3: '',
@@ -652,9 +939,7 @@ Medic.create(
             raiting: 0
         },
         {
-            name: 'Екатерина',
-            surname: 'Савинкина',
-            patronymic: 'Викторовна',
+            user_id: 22,
             daywork1: '',
             daywork2: 'пятница, воскресенье',
             daywork3: '',
@@ -666,9 +951,7 @@ Medic.create(
             raiting: 0
         },
         {
-            name: 'Михаил',
-            surname: 'Максимов',
-            patronymic: 'Михайлович',
+            user_id: 23,
             daywork1: '',
             daywork2: 'вторник, суббота',
             daywork3: '',
@@ -680,9 +963,7 @@ Medic.create(
             raiting: 0
         },
         {
-            name: 'Ольга',
-            surname: 'Оношко',
-            patronymic: 'Михайловна',
+            user_id: 24,
             daywork1: '',
             daywork2: '',
             daywork3: 'среда, четверг',
@@ -694,9 +975,7 @@ Medic.create(
             raiting: 0
         },
         {
-            name: 'Дарина',
-            surname: 'Шашорина',
-            patronymic: 'Геннадьевна',
+            user_id: 25,
             daywork1: '',
             daywork2: '',
             daywork3: 'среда, суббота',
@@ -708,9 +987,7 @@ Medic.create(
             raiting: 0
         },
         {
-            name: 'Хатиа',
-            surname: 'Шаматава',
-            patronymic: 'Отариевна',
+            user_id: 26,
             daywork1: '',
             daywork2: '',
             daywork3: 'среда, суббота',
@@ -722,9 +999,7 @@ Medic.create(
             raiting: 0
         },
         {
-            name: 'Сергей',
-            surname: 'Сладков',
-            patronymic: 'Николаевич',
+            user_id: 27,
             daywork1: '',
             daywork2: '',
             daywork3: 'вторник, четверг, пятница, суббота',
@@ -736,9 +1011,7 @@ Medic.create(
             raiting: 0
         },
         {
-            name: 'Анастасия',
-            surname: 'Петрашень',
-            patronymic: 'Викторовна',
+            user_id: 28,
             daywork1: '',
             daywork2: '',
             daywork3: 'четверг, пятница, суббота',
@@ -750,9 +1023,7 @@ Medic.create(
             raiting: 0
         },
         {
-            name: 'Александра',
-            surname: 'Сапицкая',
-            patronymic: 'Игоревна',
+            user_id: 29,
             daywork1: '',
             daywork2: '',
             daywork3: 'суббота, воскресенье',
@@ -764,9 +1035,7 @@ Medic.create(
             raiting: 0
         },
         {
-            name: 'Елена',
-            surname: 'Соколова',
-            patronymic: 'Борисовна',
+            user_id: 30,
             daywork1: '',
             daywork2: '',
             daywork3: 'воскресенье',
@@ -778,9 +1047,7 @@ Medic.create(
             raiting: 0
         },
         {
-            name: 'Ирина',
-            surname: 'Листопад',
-            patronymic: 'Владимировна',
+            user_id: 31,
             daywork1: '',
             daywork2: '',
             daywork3: 'вторник, пятница',
