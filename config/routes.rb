@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   resources :forms
   resources :diploms
   resources :medics
+  resources :patients
   resources :prices
   resources :users
   resources :sessions, only: [:new, :create, :destroy]
@@ -19,6 +20,7 @@ Rails.application.routes.draw do
   post '/prices/:id', to: 'prices#select_prices'
 
   get '/signup',  to: 'users#new'
+  post '/users/:id',  to: 'users#create_dop_info'
 
   get '/signin',  to: 'sessions#new'
   delete '/signout', to: 'sessions#destroy'

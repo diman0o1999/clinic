@@ -265,6 +265,110 @@ address {
     margin-bottom: 40px;
     margin-top: 40px;
 }
+#error_explanation{
+    color: #c22;
+    width: 60%;
+    margin: auto;
+}
+#error_explanation h2{
+    background-color: #b71c1c;
+    color: white;
+    padding: 20px;
+    border-radius: 30px;
+}
+.alert {
+    padding: 15px;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    width: 30%;
+    margin: auto;
+    margin-bottom: 40px;
+    margin-top: 40px;
+    text-align: center;
+}
+.alert-error{
+    background-color: #c55b5b;
+    color: white;
+}
+.user-all{
+    background-color: #f3f2f2;
+    margin: 10px;
+    padding: 14px;
+    cursor: pointer;
+}
+.users_role{
+    border-collapse: collapse;
+    border-spacing: 0;
+    width: 100%;
+    border: 1px;
+    margin: 40px;
+}
+.users_role th{
+     text-align: left;
+     background-color: #e8e8e8;
+     padding: 16px;
+    border: 1px solid #d2d2d2;
+ }
+.users_role td{
+    text-align: left;
+    background-color: #f5f4f4;
+    padding: 16px;
+    border: 1px solid #d2d2d2;
+}
+.info_user{
+    background-color: #f1f1f1;
+    padding: 19px;
+    font-size: 20px;
+    margin: 10px;
+}
+.href_user_info{
+    font-size: 20px;
+    background-color: #4e9c84;
+    width: 200px;
+    border-radius: 20px;
+    margin: auto;
+    margin-bottom: 40px;
+    margin-top: 40px;
+    padding: 10px;
+    text-align: center;
+    cursor: pointer;
+}
+.href_user_info a{
+    color: white;
+}
+.href_user_info a:hover{
+    color: white;
+    text-decoration: none;
+}
+.info_user_small{
+    font-size: 14px;
+    width: 40%;
+}
+.fil{
+    display: flex;
+    justify-content: space-between
+}
+.all_fil{
+    margin: auto;
+    width: 390px;
+    margin-bottom: 30px;
+}
+.what_fil{
+    text-align: center;
+    margin: 20px;
+    font-size: 20px;
+}
+.text_fil_area textarea{
+    width: 392px;
+    height: 200px;
+}
+
+
+
+
+
+
+
 
 
 

@@ -1,6 +1,5 @@
 .header-wrap
 
-
   nav.nav
     .inner
       span.nav__btn
@@ -8,10 +7,14 @@
       .nav__wrap.up-menu
         ul.nav__list
 
-          - if signed_in?
+          - if !current_user.nil?
             li.nav__item
               .nav__link
                 span.nav__link-text.little = link_to 'Профиль', current_user
+            - if admin?
+              li.nav__item
+                .nav__link
+                  span.nav__link-text.little = link_to 'Все юзеры', users_path
             li.nav__item
               .nav__link
                 span.nav__link-text.little = link_to 'Выйти', signout_path, method: "delete"

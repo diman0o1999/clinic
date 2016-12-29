@@ -23,7 +23,7 @@ $(document).ready(function() {
     $(".new_form").on("ajax:success", function(xhr, data) {
         $(".success").empty();
         $(".error").empty();
-        $(this).append("<div class = 'success'>" + data.form.name + ", Ваша заявка принята!" + "</div>");
+        $(this).append("<div class = 'success'>" + data.form.form_name + ", Ваша заявка принята!" + "</div>");
         $(this).find('input').val('');
     }).on("ajax:error", function(xhr, data) {
         var mass = data.responseJSON;

@@ -1,15 +1,53 @@
 class UsersController < ApplicationController
 
-  before_action :signed_in_user, only: [:show, :edit, :update]
-  before_action :correct_user, only: [:show, :edit, :update]
+  #чтобы редактировать, обновлять, удалять и просматривать нужно войти
+  before_action :signed_in_user, only: [:show, :edit, :update, :destroy]
+  #возможность редактировать, обновлять, удалять и просматривать только свой профиль
+  before_action :correct_user, only: [:show, :edit, :update, :destroy]
+
 
   def index
-    redirect_to root_path
+    #если текущий юзер - админ, то получаем инфу по всем юзерам
+    if current_user.admin?
+      @users = User.left_outer_joins(:role).select('users.id', 'users.user_name', 'users.surname', 'users.patronymic', 'roles.role_name')
+    else
+      redirect_to root_path
+    end
+
   end
 
   def show
-    @user = User.find(params[:id])
+    #для доп.форм пациента и врача
+    @patient = Patient.new
+    @medic = Medic.new
+
+    #все филиалы
+    @filials = Filial.all
+
+    #все отделения
+    @departaments = Departament.all
+
+    #роль в системе у пользователя
     @role = User.find(params[:id]).role
+
+    #если врач
+    if @role.id == 1
+      #инфа о враче
+      @about_medic = Medic.find_by(user_id: params[:id])
+
+      #если есть информация о враче
+      if !@about_medic.nil?
+        #филиалы где он работает
+        @medic_filials = Medic.find(@about_medic.id).filials.select(:id, :filial_name)
+        #отделения где он работает
+        @medic_departaments = Medic.find(@about_medic.id).departaments.select(:id, :departament_name)
+      end
+
+    #если пациент
+    elsif @role.id == 2
+      @about_patient = Patient.find_by(user_id: params[:id])
+    end
+
   end
 
   def new
@@ -21,11 +59,11 @@ class UsersController < ApplicationController
     @roles = Role.first(2)
     @user = User.new(user_params)
     if @user.save
-      sign_in @user
+      sign_in(@user)
       flash[:success] = "Поздравляем, вы зарегистрировались!"
       redirect_to @user
     else
-      @name = params[:user][:name]
+      @user_name = params[:user][:user_name]
       @surname = params[:user][:surname]
       @patronymic = params[:user][:patronymic]
       @email = params[:user][:email]
@@ -46,18 +84,74 @@ class UsersController < ApplicationController
     end
   end
 
+  def destroy
+    User.find(params[:id]).destroy
+    flash[:success] = "Вы удалены!"
+    redirect_to root_path
+  end
+
+  #обработка доп.форм пациента или врача
+  def create_dop_info
+
+    if params[:patient_btn]
+      @patient = Patient.new(patient_params)
+      if @patient.save
+        flash[:success] = "Готово!"
+        redirect_to current_user
+      else
+        @tel_number = params[:patient][:tel_number]
+        render current_user
+      end
+    end
+
+    if params[:medic_btn]
+      @medic = Medic.new(medic_params)
+      if @medic.save
+        flash[:success] = "Готово!"
+        redirect_to current_user
+      else
+        @post1 = params[:medic][:post1]
+        @post2 = params[:medic][:post2]
+        @post3 = params[:medic][:post3]
+        @daywork1 = params[:medic][:daywork1]
+        @daywork2 = params[:medic][:daywork2]
+        @daywork3 = params[:medic][:daywork3]
+        @about = params[:medic][:about]
+        render current_user
+      end
+    end
+
+  end
+
+
   private
+
   def user_params
-    params.require(:user).permit(:name, :surname, :patronymic, :email, :password, :password_confirmation, :role_id)
+    params.require(:user).permit(:user_name, :surname, :patronymic, :email, :password, :password_confirmation, :role_id)
+  end
+
+  def patient_params
+    params.require(:patient).permit(:user_id, :tel_number, :foto)
+  end
+
+  def medic_params
+    params.require(:medic).permit(:user_id, :foto, :post1, :post1, :post2, :post3, :daywork1, :daywork2, :daywork3, :about)
   end
 
   def signed_in_user
-    redirect_to signin_url, notice: "Авторизуйтесь для продолжения!" unless signed_in?
+    #если текущий пользователь пустой
+    if current_user.nil?
+      flash[:notice] = "Авторизуйтесь для продолжения!"
+      redirect_to signin_url
+    end
   end
 
   def correct_user
     @user = User.find(params[:id])
-    redirect_to(current_user) unless current_user?(@user)
+    #если пользователь не равен текущему или админу, то отправляем его на свою страницу
+    if @user != current_user && !admin?
+      redirect_to(current_user)
+    end
   end
 
 

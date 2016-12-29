@@ -58,4 +58,4 @@ gem 'rubocop'
 gem 'activerecord-reset-pk-sequence'
 gem 'rspec-rails'
 gem 'fotoramajs'
-gem 'bcrypt'
+gem 'bcrypt' #чтобы работал has_secure_password

@@ -5,13 +5,13 @@
     = form_for @user do |f|
       - if @user.errors.any?
         #error_explanation
-          h2 = "#{pluralize(@user.errors.count, "error")} :прежде чем отправить заявку, заполните поля:"
+          h2 = "#{pluralize(@user.errors.count, "error")}: обратите внимания на следующие поля:"
           ul
             - @user.errors.full_messages.each do |message|
               li = message
       .form-inline
         .form-user
-          = f.text_field :name, :required => true, :placeholder => "Имя*", :minlength => 3, :value => "#{@name}"
+          = f.text_field :user_name, :required => true, :placeholder => "Имя*", :minlength => 3, :value => "#{@user_name}"
         .form-user
           = f.text_field :surname, :required => true, :placeholder => "Фамилия*", :minlength => 3, :value => "#{@surname}"
         .form-user
@@ -23,6 +23,6 @@
         .form-user
           = f.password_field :password_confirmation, :required => true, :placeholder => "Подтвердите пароль*", :minlength => 6
         .form-user
-          = f.select :role_id, options_from_collection_for_select(@roles, :id, :name)
+          = f.select :role_id, options_from_collection_for_select(@roles, :id, :role_name)
         .form-user-btn
           = f.submit("ЗАРЕГИСТРИРОВАТЬСЯ")

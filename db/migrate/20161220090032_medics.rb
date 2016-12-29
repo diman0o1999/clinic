@@ -11,6 +11,7 @@ class Medics < ActiveRecord::Migration[5.0]
       t.string :post3
       t.string :foto
       t.integer :raiting
+      t.integer :status_medic, default: 0
 
       t.timestamps
     end

@@ -13,7 +13,7 @@ $(document).ready(function() {
                 data.forEach (function(file){
                     $(box).append(
                         "<li class='price__list-item'>" +
-                            "<div class='price__name'>" + file.name + "</div>" +
+                            "<div class='price__name'>" + file.price_name + "</div>" +
                             "<div class='price__value'>" + file.price + " руб." + "</div>" +
                         "</li>"
                     );

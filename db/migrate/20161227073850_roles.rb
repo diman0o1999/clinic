@@ -1,7 +1,7 @@
 class Roles < ActiveRecord::Migration[5.0]
   def change
     create_table :roles do |t|
-      t.string :name
+      t.string :role_name
 
       t.timestamps
     end

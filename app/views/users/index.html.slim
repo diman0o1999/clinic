@@ -1,0 +1,15 @@
+- @title = "Все пользователи"
+.inner
+  .header-h1 Пользователи
+
+  table.users_role
+    tbody
+      tr
+        th Пользователь
+        th Роль
+        th
+      - @users.each do |user|
+        tr
+          td = user.surname + " " + user.user_name + " " + user.patronymic
+          td = user.role_name
+          td = link_to "Профиль", "users/"+user.id.to_s

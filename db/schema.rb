@@ -26,8 +26,8 @@ ActiveRecord::Schema.define(version: 20161227133409) do
     t.integer  "departament_id"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
-    t.index ["departament_id"], name: "index_departaments_medics_on_departament_id", using: :btree
-    t.index ["medic_id"], name: "index_departaments_medics_on_medic_id", using: :btree
+    t.index ["departament_id"], role_name: "index_departaments_medics_on_departament_id", using: :btree
+    t.index ["medic_id"], role_name: "index_departaments_medics_on_medic_id", using: :btree
   end
 
   create_table "diploms", force: :cascade do |t|
@@ -55,8 +55,8 @@ ActiveRecord::Schema.define(version: 20161227133409) do
     t.integer  "filial_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["filial_id"], name: "index_filials_medics_on_filial_id", using: :btree
-    t.index ["medic_id"], name: "index_filials_medics_on_medic_id", using: :btree
+    t.index ["filial_id"], role_name: "index_filials_medics_on_filial_id", using: :btree
+    t.index ["medic_id"], role_name: "index_filials_medics_on_medic_id", using: :btree
   end
 
   create_table "forms", force: :cascade do |t|
@@ -113,7 +113,7 @@ ActiveRecord::Schema.define(version: 20161227133409) do
     t.string   "surname"
     t.string   "patronymic"
     t.string   "name"
-    t.index ["email"], name: "index_users_on_email", using: :btree
+    t.index ["email"], role_name: "index_users_on_email", using: :btree
   end
 
 end

@@ -8,7 +8,7 @@ p
             li = message
     .form-inline
       .form-gr
-        = f.text_field :name, :required => true, :placeholder => "Фамилия Имя Отчество*", :minlength => 3, :value => "#{@name}"
+        = f.text_field :form_name, :required => true, :placeholder => "Фамилия Имя Отчество*", :minlength => 3, :value => "#{@form_name}"
       .form-gr-2
         = f.telephone_field :telephone, :required => true, :placeholder => "Телефон*", :minlength => 5, :value => "#{@telephone}"
       .form-gr-3
