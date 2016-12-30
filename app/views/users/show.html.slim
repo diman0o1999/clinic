@@ -74,11 +74,17 @@
           tr.info_user
             td = "Ваш статус"
             - if @about_medic.status_medic == 0
-              td.info_user_small = "Не опубликован"
+              td.info_user_small
+                p = "Не опубликован"
+                = form_for @medic, url: {action: "create_dop_info"} do |f|
+                  p = submit_tag "Опубликовать", :name => 'public_btn'
             - else @about_medic.status_medic == 1
-              td.info_user_small = "Опубликован"
+              td.info_user_small
+                p = "Опубликован"
+                p = form_for @medic, url: {action: "create_dop_info"} do |f|
+                  p = submit_tag "Снять с публикации", :name => 'nopublic_btn'
 
-      .href_user_info = link_to "Обновить", edit_user_path
+      .href_user_info = link_to "Обновить", edit_physician_path
 
     /если карточка врача пустая
     - else
@@ -106,7 +112,7 @@
               - @filials.each do |filiale|
                 .fil
                   .filname = f.label :filials, filiale.filial_name
-                  .filcheck = f.check_box :filials, :id => filiale.id
+                  .filcheck = f.check_box :filials, { :multiple => true }, "#{filiale.id}", nil
 
             .form-user
               = f.text_field :daywork1, :placeholder => "Дни работы на Коломяжском*"
@@ -120,7 +126,7 @@
               - @departaments.each do |departamente|
                 .fil
                   .filname = f.label :departaments, departamente.departament_name
-                  .filcheck = f.check_box :departaments, :id => departamente.id
+                  .filcheck = f.check_box :departaments, { :multiple => true }, "#{departamente.id}", nil
 
             .form-user.text_fil_area
               = f.text_area :about, :placeholder => "О вас*"

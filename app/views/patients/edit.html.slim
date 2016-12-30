@@ -1,0 +1,16 @@
+.header-h1 Редактируем карточку пациента
+p
+  = form_for @patient, url: {action: "update"} do |f|
+    - if @patient.errors.any?
+      #error_explanation
+        h2 = "#{pluralize(@patient.errors.count, "error")}: обратите внимания на следующие поля:"
+        ul
+          - @patient.errors.full_messages.each do |message|
+            li = message
+    .form-inline
+      .form-user
+        = f.text_field :foto, :placeholder => "Фото*"
+      .form-user
+        = f.telephone_field :tel_number, :required => true, :placeholder => "Телефон*", :minlength => 5, :value => "#{@patient_tel}"
+      .form-user-btn
+        = submit_tag "ГОТОВО", :name => 'patient_btn'

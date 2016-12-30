@@ -1,0 +1,44 @@
+.header-h1 Редактируем карточку врача
+p
+  = form_for @medic, url: {action: "update"} do |f|
+    - if @medic.errors.any?
+      #error_explanation
+        h2 = "#{pluralize(@medic.errors.count, "error")}: обратите внимания на следующие поля:"
+        ul
+          - @medic.errors.full_messages.each do |message|
+            li = message
+    .form-inline
+      .form-user
+        = f.text_field :foto, :placeholder => "Фото*"
+      .form-user
+        = f.text_field :post1, :placeholder => "Должность №1*", :value => "#{@medic_post1}"
+      .form-user
+        = f.text_field :post2, :placeholder => "Должность №2*", :value => "#{@medic_post2}"
+      .form-user
+        = f.text_field :post3, :placeholder => "Должность №3*", :value => "#{@medic_post3}"
+
+      /.all_fil
+        .what_fil = "В каких филиалых вы работаете:"
+        - @filials.each do |filiale|
+          .fil
+            .filname = f.label :filials, filiale.filial_name
+            .filcheck = f.check_box :filials, { :multiple => true }, "#{filiale.id}", nil
+
+      .form-user
+        = f.text_field :daywork1, :placeholder => "Дни работы на Коломяжском*", :value => "#{@medic_daywork1}"
+      .form-user
+        = f.text_field :daywork2, :placeholder => "Дни работы на Коллонтай*", :value => "#{@medic_daywork2}"
+      .form-user
+        = f.text_field :daywork3, :placeholder => "Дни работы на Ленинском*", :value => "#{@medic_daywork3}"
+
+      /.all_fil
+        .what_fil = "В каких отделениях вы работаете:"
+        - @departaments.each do |departamente|
+          .fil
+            .filname = f.label :departaments, departamente.departament_name
+            .filcheck = f.check_box :departaments, { :multiple => true }, "#{departamente.id}", nil
+
+      .form-user.text_fil_area
+        = f.text_area :about, :placeholder => "О вас*", :value => "#{@medic_about}"
+      .form-user-btn
+        = submit_tag "ГОТОВО", :name => 'medic_btn'

@@ -92,7 +92,7 @@ class UsersController < ApplicationController
 
   #обработка доп.форм пациента или врача
   def create_dop_info
-
+    #пациент
     if params[:patient_btn]
       @patient = Patient.new(patient_params)
       if @patient.save
@@ -103,10 +103,27 @@ class UsersController < ApplicationController
         render current_user
       end
     end
-
+    #врач
     if params[:medic_btn]
       @medic = Medic.new(medic_params)
       if @medic.save
+
+        #id врача, который записался в базу
+        @medic_id = Medic.find_by(user_id: params[:id]).id
+        #id филиалов, которые он отметил в форме
+        @filial_id = params[:medic][:filials]
+        #id отделений, которые он отметил в форме
+        @departament_id = params[:medic][:departaments]
+
+        #перебираем все отмеченные филиалы и пишем в соединительную таблицу
+        @filial_id.each do |fil|
+          Filials_Medic.create(:medic_id => @medic_id, :filial_id => fil)
+        end
+        #перебираем все отмеченные отделения и пишем в соединительную таблицу
+        @departament_id.each do |dep|
+          Departaments_Medic.create(:medic_id => @medic_id, :departament_id => dep)
+        end
+
         flash[:success] = "Готово!"
         redirect_to current_user
       else
@@ -117,6 +134,30 @@ class UsersController < ApplicationController
         @daywork2 = params[:medic][:daywork2]
         @daywork3 = params[:medic][:daywork3]
         @about = params[:medic][:about]
+        render current_user
+      end
+    end
+
+    #публикуем врача
+    if params[:public_btn]
+      #врач, который записался в базу
+      @medic_public = Medic.find_by(user_id: params[:id])
+      if @medic_public.update_attributes(:status_medic => 1)
+        flash[:success] = "Опубликован!"
+        redirect_to current_user
+      else
+        render current_user
+      end
+    end
+
+    #убираем с публикации врача
+    if params[:nopublic_btn]
+      #врач, который записался в базу
+      @medic_public = Medic.find_by(user_id: params[:id])
+      if @medic_public.update_attributes(:status_medic => 0)
+        flash[:success] = "Снят с публикации!"
+        redirect_to current_user
+      else
         render current_user
       end
     end
@@ -135,7 +176,7 @@ class UsersController < ApplicationController
   end
 
   def medic_params
-    params.require(:medic).permit(:user_id, :foto, :post1, :post1, :post2, :post3, :daywork1, :daywork2, :daywork3, :about)
+    params.require(:medic).permit(:user_id, :foto, :post1, :post1, :post2, :post3, :daywork1, :daywork2, :daywork3, :about, :filials, :departaments)
   end
 
   def signed_in_user

@@ -10,15 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161227133409) do
+ActiveRecord::Schema.define(version: 20161230214551) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "departaments", force: :cascade do |t|
-    t.string   "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "departament_name"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
   end
 
   create_table "departaments_medics", id: false, force: :cascade do |t|
@@ -26,8 +26,8 @@ ActiveRecord::Schema.define(version: 20161227133409) do
     t.integer  "departament_id"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
-    t.index ["departament_id"], role_name: "index_departaments_medics_on_departament_id", using: :btree
-    t.index ["medic_id"], role_name: "index_departaments_medics_on_medic_id", using: :btree
+    t.index ["departament_id"], name: "index_departaments_medics_on_departament_id", using: :btree
+    t.index ["medic_id"], name: "index_departaments_medics_on_medic_id", using: :btree
   end
 
   create_table "diploms", force: :cascade do |t|
@@ -38,7 +38,7 @@ ActiveRecord::Schema.define(version: 20161227133409) do
   end
 
   create_table "filials", force: :cascade do |t|
-    t.string   "name"
+    t.string   "filial_name"
     t.string   "metro"
     t.bigint   "telephone"
     t.string   "address"
@@ -55,12 +55,12 @@ ActiveRecord::Schema.define(version: 20161227133409) do
     t.integer  "filial_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["filial_id"], role_name: "index_filials_medics_on_filial_id", using: :btree
-    t.index ["medic_id"], role_name: "index_filials_medics_on_medic_id", using: :btree
+    t.index ["filial_id"], name: "index_filials_medics_on_filial_id", using: :btree
+    t.index ["medic_id"], name: "index_filials_medics_on_medic_id", using: :btree
   end
 
   create_table "forms", force: :cascade do |t|
-    t.string   "name"
+    t.string   "form_name"
     t.bigint   "telephone"
     t.integer  "filial_id"
     t.datetime "created_at", null: false
@@ -71,15 +71,16 @@ ActiveRecord::Schema.define(version: 20161227133409) do
     t.string   "daywork1"
     t.string   "post1"
     t.string   "foto"
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
     t.string   "about"
-    t.integer  "raiting",    default: 0
+    t.integer  "raiting",      default: 0
     t.string   "post2"
     t.string   "post3"
     t.string   "daywork2"
     t.string   "daywork3"
     t.integer  "user_id"
+    t.integer  "status_medic", default: 0
   end
 
   create_table "patients", force: :cascade do |t|
@@ -91,7 +92,7 @@ ActiveRecord::Schema.define(version: 20161227133409) do
   end
 
   create_table "prices", force: :cascade do |t|
-    t.string   "name"
+    t.string   "price_name"
     t.integer  "price"
     t.integer  "departament_id"
     t.datetime "created_at",     null: false
@@ -99,7 +100,7 @@ ActiveRecord::Schema.define(version: 20161227133409) do
   end
 
   create_table "roles", force: :cascade do |t|
-    t.string   "name"
+    t.string   "role_name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -108,12 +109,14 @@ ActiveRecord::Schema.define(version: 20161227133409) do
     t.string   "email"
     t.string   "password_digest"
     t.integer  "role_id"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
     t.string   "surname"
     t.string   "patronymic"
-    t.string   "name"
-    t.index ["email"], role_name: "index_users_on_email", using: :btree
+    t.string   "user_name"
+    t.string   "remember_token"
+    t.boolean  "admin",           default: false
+    t.index ["email"], name: "index_users_on_email", using: :btree
   end
 
 end
