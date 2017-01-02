@@ -40,4 +40,9 @@ module SessionsHelper
     current_user.admin?
   end
 
+  #роль пользователя
+  def role
+      current_user.role.role_name
+  end
+
 end

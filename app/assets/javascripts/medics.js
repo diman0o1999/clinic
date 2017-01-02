@@ -6,7 +6,6 @@ $(document).ready(function() {
     var url = window.location.href;
     var host = 'http://localhost:3000';
     url = url.replace (new RegExp (host, 'g'), '');
-
     //если текущий урл это врачи
     if(url == '/medics') {
         //выводим врачей по дефолту на первый филиал

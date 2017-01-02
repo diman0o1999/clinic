@@ -1,0 +1,38 @@
+- @title = "Отзывы"
+.inner
+  .header-h1 Отзывы о нашей стоматологии
+
+  /если пользователь залогинен
+  - if !current_user.nil?
+    /и этот пользователь - пациент
+    - if role == "Пациент"
+      .header-h1 Добавить отзыв
+      p
+        = form_for @review, url: {action: "create"} do |f|
+          - if @review.errors.any?
+            #error_explanation
+              h2 = "#{pluralize(@review.errors.count, "error")}: обратите внимания на следующие поля:"
+              ul
+                - @review.errors.full_messages.each do |message|
+                  li = message
+          .form-inline
+            .form-user.article
+              = f.text_area :text_reviews, :placeholder => "Текст отзыва*", :value => "#{@text_reviews}"
+            .form-user-btn
+              = f.submit("Добавить отзыв")
+            .form-gr-4
+              = f.hidden_field :user_id, :value => current_user.id
+  /если не залогинен
+  - else
+    .review_reg
+      p Чтобы оставить отзыв, нужно войти
+      p = link_to "Войти", signin_path
+
+  - @reviews.each do |review|
+    li.review__item
+      blockquote.review__block
+        header.review__head
+          h3.review__author = review.surname + " " +  review.user_name + " " + review.patronymic
+          time.review__date = review.created_at.strftime("%d %b. %Y %H:%M")
+        .review__body
+          p = review.text_reviews

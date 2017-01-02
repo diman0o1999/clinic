@@ -17,8 +17,8 @@ p
       .form-user
         = f.text_field :post3, :placeholder => "Должность №3*", :value => "#{@medic_post3}"
 
-      /.all_fil
-        .what_fil = "В каких филиалых вы работаете:"
+      .all_fil
+        .what_fil = "В каких филиалах вы работаете:"
         - @filials.each do |filiale|
           .fil
             .filname = f.label :filials, filiale.filial_name
@@ -31,7 +31,7 @@ p
       .form-user
         = f.text_field :daywork3, :placeholder => "Дни работы на Ленинском*", :value => "#{@medic_daywork3}"
 
-      /.all_fil
+      .all_fil
         .what_fil = "В каких отделениях вы работаете:"
         - @departaments.each do |departamente|
           .fil

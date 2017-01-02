@@ -1,0 +1,4 @@
+- @title = "#{@article.title}"
+article.page.section.article
+  .inner
+    = simple_format(@article.text, {}, :sanitize => false)

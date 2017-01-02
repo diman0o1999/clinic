@@ -10,10 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161230214551) do
+ActiveRecord::Schema.define(version: 20170102220230) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "articles", force: :cascade do |t|
+    t.string   "title"
+    t.string   "description"
+    t.text     "text"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
 
   create_table "departaments", force: :cascade do |t|
     t.string   "departament_name"
@@ -21,13 +29,12 @@ ActiveRecord::Schema.define(version: 20161230214551) do
     t.datetime "updated_at",       null: false
   end
 
-  create_table "departaments_medics", id: false, force: :cascade do |t|
+  create_table "departaments_medics", force: :cascade do |t|
     t.integer  "medic_id"
     t.integer  "departament_id"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
-    t.index ["departament_id"], name: "index_departaments_medics_on_departament_id", using: :btree
-    t.index ["medic_id"], name: "index_departaments_medics_on_medic_id", using: :btree
+    t.index ["medic_id", "departament_id"], name: "index_departaments_medics_on_medic_id_and_departament_id", unique: true, using: :btree
   end
 
   create_table "diploms", force: :cascade do |t|
@@ -50,13 +57,12 @@ ActiveRecord::Schema.define(version: 20161230214551) do
     t.string   "map"
   end
 
-  create_table "filials_medics", id: false, force: :cascade do |t|
+  create_table "filials_medics", force: :cascade do |t|
     t.integer  "medic_id"
     t.integer  "filial_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["filial_id"], name: "index_filials_medics_on_filial_id", using: :btree
-    t.index ["medic_id"], name: "index_filials_medics_on_medic_id", using: :btree
+    t.index ["medic_id", "filial_id"], name: "index_filials_medics_on_medic_id_and_filial_id", unique: true, using: :btree
   end
 
   create_table "forms", force: :cascade do |t|
@@ -65,6 +71,15 @@ ActiveRecord::Schema.define(version: 20161230214551) do
     t.integer  "filial_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "mark_medics", force: :cascade do |t|
+    t.integer  "medic_id"
+    t.integer  "user_id"
+    t.integer  "mark"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["medic_id", "user_id"], name: "index_mark_medics_on_medic_id_and_user_id", unique: true, using: :btree
   end
 
   create_table "medics", force: :cascade do |t|
@@ -97,6 +112,13 @@ ActiveRecord::Schema.define(version: 20161230214551) do
     t.integer  "departament_id"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
+  end
+
+  create_table "reviews", force: :cascade do |t|
+    t.integer  "user_id"
+    t.text     "text_reviews"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
   end
 
   create_table "roles", force: :cascade do |t|

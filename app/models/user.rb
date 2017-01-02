@@ -3,6 +3,7 @@ class User < ApplicationRecord
   before_create :create_remember_token
 
   belongs_to :role
+  has_many :reviews
 
   ########валидация при регистрации########
 

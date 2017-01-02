@@ -2,6 +2,7 @@ class MedicsController < ApplicationController
   def index
     @filials = Filial.all
     @form = Form.new
+    @medic_mark = Mark_medic.new
   end
 
   #выборка нужных полей из трех таблиц: филиалы, медики, юзеры и формирование хэша из полученных данных
@@ -25,6 +26,10 @@ class MedicsController < ApplicationController
     respond_to do |format|
       format.json { render json: @filial_medics }
     end
+  end
+
+  def mark
+
   end
 
 

@@ -57,7 +57,7 @@
                 li.nav__dropdown-item
                   .nav__link = link_to 'Лицензии', licenses_path
                 li.nav__dropdown-item
-                  .nav__link = link_to 'Отзывы пациентов', contacts_path
+                  .nav__link = link_to 'Отзывы пациентов', reviews_path
           li.nav__item.nav__item_drop
             .nav__link.nav__link_drop
               span.nav__link-text Услуги
@@ -96,13 +96,13 @@
               span.nav__link-text = link_to 'Цены', prices_path
           li.nav__item
             .nav__link
-              span.nav__link-text = link_to 'Статьи', contacts_path
+              span.nav__link-text = link_to 'Статьи', articles_path
           li.nav__item
             .nav__link
               span.nav__link-text = link_to 'Вопросы', contacts_path
           li.nav__item
             .nav__link
-              span.nav__link-text = link_to 'Отзывы', contacts_path
+              span.nav__link-text = link_to 'Отзывы', reviews_path
           li.nav__item
             .nav__link
               span.nav__link-text = link_to 'Акции', action_path
