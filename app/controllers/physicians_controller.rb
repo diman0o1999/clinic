@@ -8,7 +8,7 @@ class PhysiciansController < ApplicationController
     #все отделения
     @departaments = Departament.all
 
-    @medic = Medic.new
+    @medic = Medic.find_by(user_id: params[:id])
     @medic_post1 = Medic.find_by(user_id: params[:id]).post1
     @medic_post2 = Medic.find_by(user_id: params[:id]).post2
     @medic_post3 = Medic.find_by(user_id: params[:id]).post3
@@ -73,7 +73,7 @@ class PhysiciansController < ApplicationController
   private
 
   def medic_params
-    params.require(:medic).permit(:user_id, :foto, :post1, :post1, :post2, :post3, :daywork1, :daywork2, :daywork3, :about, :filials, :departaments)
+    params.require(:medic).permit(:user_id, :avatar, :post1, :post1, :post2, :post3, :daywork1, :daywork2, :daywork3, :about, :filials, :departaments)
   end
 
 

@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   resources :articles
   resources :reviews
   resources :users
+  resources :questions
   resources :sessions, only: [:new, :create, :destroy]
 
   root 'main#index'

@@ -33,7 +33,7 @@
           tr.info_user
             td = "Фото"
             td.info_user_small
-              img alt="" src="/assets/pictures/doctors/#{@about_medic.foto}"
+              img alt="" src="#{@about_medic.avatar}"
           tr.info_user
             td = "Должность №1"
             td.info_user_small = "#{@about_medic.post1}"
@@ -92,7 +92,7 @@
     - else
       .header-h1 Заполните карточку врача
       p
-        = form_for @medic, url: {action: "create_dop_info"} do |f|
+        = form_for @medic, url: {action: "create_dop_info"}, :html => {:multipart => true} do |f|
           - if @medic.errors.any?
             #error_explanation
               h2 = "#{pluralize(@medic.errors.count, "error")}: обратите внимания на следующие поля:"
@@ -100,8 +100,8 @@
                 - @medic.errors.full_messages.each do |message|
                   li = message
           .form-inline
-            .form-user
-              = f.text_field :foto, :placeholder => "Фото*"
+            .form-avatar
+              = f.file_field :avatar
             .form-user
               = f.text_field :post1, :placeholder => "Должность №1*"
             .form-user
@@ -139,7 +139,7 @@
 
   /если пользователь пациент
   - elsif @role.id == 2
-    /если карточка пациента пустая
+    /если карточка пациента не пустая
     - if !@about_patient.nil?
       .header-h1 Карточка пациента
       table.users_role
@@ -147,18 +147,18 @@
           tr.info_user
             td = "Фото"
             td.info_user_small
-              img alt="" src=""
+              img alt="" src="#{@about_patient.avatar}"
           tr.info_user
             td = "Номер телефона"
             td.info_user_small = "#{@about_patient.tel_number}"
 
       .href_user_info = link_to "Обновить", edit_patient_path
 
-    /если карточка пациента не пустая
+    /если карточка пациента пустая
     - else
       .header-h1 Заполните карточку пациента
       p
-        = form_for @patient, url: {action: "create_dop_info"} do |f|
+        = form_for @patient, url: {action: "create_dop_info"}, :html => {:multipart => true} do |f|
           - if @patient.errors.any?
             #error_explanation
               h2 = "#{pluralize(@patient.errors.count, "error")}: обратите внимания на следующие поля:"
@@ -166,15 +166,11 @@
                 - @patient.errors.full_messages.each do |message|
                   li = message
           .form-inline
-            .form-user
-              = f.text_field :foto, :placeholder => "Фото*"
+            .form-avatar
+              = f.file_field :avatar
             .form-user
               = f.telephone_field :tel_number, :required => true, :placeholder => "Телефон*", :minlength => 5, :value => "#{@tel_number}"
             .form-user
               = f.hidden_field :user_id, :value => "#{@user.id}"
             .form-user-btn
               = submit_tag "ГОТОВО", :name => 'patient_btn'
-
-
-
-

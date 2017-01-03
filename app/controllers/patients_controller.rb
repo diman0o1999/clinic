@@ -1,7 +1,7 @@
 class PatientsController < ApplicationController
 
   def edit
-    @patient = Patient.new
+    @patient = Patient.find_by(user_id: params[:id])
     @patient_tel = Patient.find_by(user_id: params[:id]).tel_number
   end
 
@@ -21,7 +21,7 @@ class PatientsController < ApplicationController
   private
 
   def patient_params
-    params.require(:patient).permit(:tel_number, :foto)
+    params.require(:patient).permit(:tel_number, :avatar)
   end
 
 

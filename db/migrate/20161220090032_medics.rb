@@ -9,7 +9,7 @@ class Medics < ActiveRecord::Migration[5.0]
       t.string :post1
       t.string :post2
       t.string :post3
-      t.string :foto
+      t.string :avatar
       t.integer :raiting
       t.integer :status_medic, default: 0
 

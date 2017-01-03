@@ -1,9 +1,12 @@
 class User < ApplicationRecord
+
   before_save :create_email
   before_create :create_remember_token
 
   belongs_to :role
   has_many :reviews
+  belongs_to :patient
+  belongs_to :medic
 
   ########валидация при регистрации########
 

@@ -172,11 +172,11 @@ class UsersController < ApplicationController
   end
 
   def patient_params
-    params.require(:patient).permit(:user_id, :tel_number, :foto)
+    params.require(:patient).permit(:user_id, :tel_number, :avatar)
   end
 
   def medic_params
-    params.require(:medic).permit(:user_id, :foto, :post1, :post1, :post2, :post3, :daywork1, :daywork2, :daywork3, :about, :filials, :departaments)
+    params.require(:medic).permit(:user_id, :avatar, :post1, :post1, :post2, :post3, :daywork1, :daywork2, :daywork3, :about, :filials, :departaments)
   end
 
   def signed_in_user

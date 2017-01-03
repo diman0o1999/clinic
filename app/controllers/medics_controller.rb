@@ -5,11 +5,11 @@ class MedicsController < ApplicationController
     @medic_mark = Mark_medic.new
   end
 
-  #выборка нужных полей из трех таблиц: филиалы, медики, юзеры и формирование хэша из полученных данных
+  #выборка нужных полей из трех таблиц: филиалы, медики, юзеры
   def select_medics
     @filial_medics = Filial.find(params[:id]).medics.left_outer_joins(:user).order(:id).select(
         'medics.id',
-        'medics.foto',
+        'medics.avatar',
         'users.surname',
         'users.patronymic',
         'users.user_name',

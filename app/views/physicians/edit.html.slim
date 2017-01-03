@@ -1,6 +1,6 @@
 .header-h1 Редактируем карточку врача
 p
-  = form_for @medic, url: {action: "update"} do |f|
+  = form_for @medic, url: {action: "update"}, :html => {:multipart => true} do |f|
     - if @medic.errors.any?
       #error_explanation
         h2 = "#{pluralize(@medic.errors.count, "error")}: обратите внимания на следующие поля:"
@@ -8,8 +8,10 @@ p
           - @medic.errors.full_messages.each do |message|
             li = message
     .form-inline
-      .form-user
-        = f.text_field :foto, :placeholder => "Фото*"
+      .form-avatar
+        = image_tag(@medic.avatar_url) if @medic.avatar?
+        = f.file_field :avatar
+        = f.hidden_field :avatar_cache
       .form-user
         = f.text_field :post1, :placeholder => "Должность №1*", :value => "#{@medic_post1}"
       .form-user

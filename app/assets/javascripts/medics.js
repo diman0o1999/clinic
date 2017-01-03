@@ -25,7 +25,7 @@ $(document).ready(function() {
                     if(file.status_medic == 1) {
                         box.append(
                             "<article class='doctor__item'>" +
-                            "<figure class='doctor__fig'><img src=/assets/pictures/doctors/" + file.foto + "></figure>" +
+                            "<figure class='doctor__fig'><img src="+file.avatar.url+"></figure>" +
                             "<div class='doctor__body'>" +
                             "<div class='doctor__head'>" +
                             "<h3 class='doctor__name'> <span class='doctor__name-f'>" + file.surname + "</span>" + file.user_name + ' ' + file.patronymic + "</h3>" +
@@ -84,7 +84,7 @@ $(document).ready(function() {
                     if(file.status_medic == 1) {
                         box.append(
                             "<article class='doctor__item'>" +
-                            "<figure class='doctor__fig'><img src=/assets/pictures/doctors/" + file.foto + "></figure>" +
+                            "<figure class='doctor__fig'><img src="+file.avatar.url+"></figure>" +
                             "<div class='doctor__body'>" +
                             "<div class='doctor__head'>" +
                             "<h3 class='doctor__name'> <span class='doctor__name-f'>" + file.surname + "</span>" + file.user_name + ' ' + file.patronymic + "</h3>" +

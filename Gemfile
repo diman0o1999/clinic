@@ -59,3 +59,4 @@ gem 'activerecord-reset-pk-sequence'
 gem 'rspec-rails'
 gem 'fotoramajs'
 gem 'bcrypt' #чтобы работал has_secure_password
+gem 'carrierwave' #для загрузки изображений
