@@ -60,3 +60,8 @@ gem 'rspec-rails'
 gem 'fotoramajs'
 gem 'bcrypt' #чтобы работал has_secure_password
 gem 'carrierwave' #для загрузки изображений
+
+group :production do
+  # For Heroku deployment
+  gem 'rails_12factor'
+end
