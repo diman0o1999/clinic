@@ -7,6 +7,7 @@ class Filials < ActiveRecord::Migration[5.0]
       t.string :address
       t.string :time_work
       t.string :day_work
+      t.string :telephone_full
 
       t.timestamps
     end
