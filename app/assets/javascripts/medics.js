@@ -4,11 +4,11 @@ $(document).ready(function() {
 
     //текущий урл
     var url = window.location.href;
-    //var host = 'http://localhost:3000';
-    var host = 'https://mighty-ocean-69682.herokuapp.com';
-    url = url.replace (new RegExp (host, 'g'), '');
+    var arr = url.split('/');
+    var last_url = arr[arr.length-1];
+
     //если текущий урл это врачи
-    if(url == '/medics') {
+    if(last_url == 'medics') {
         //выводим врачей по дефолту на первый филиал
         $.post(
             "/medics/1",

@@ -26,15 +26,17 @@ class QuestionsController < ApplicationController
         @medic_questions.push(@medic_question)
       end
 
-      #находим по id вопроса, пациента, который его задал
-      @surname_patient =  Question.find(question.id).patient.user.surname
-      @name_patient =  Question.find(question.id).patient.user.user_name
-      @patronymic_patient = Question.find(question.id).patient.user.patronymic
+      #если у вопроса есть спрашивающий(пациент), находим по id вопроса, пациента, который его задал
+      if !Question.find(question.id).patient.nil?
+        @surname_patient =  Question.find(question.id).patient.user.surname
+        @name_patient =  Question.find(question.id).patient.user.user_name
+        @patronymic_patient = Question.find(question.id).patient.user.patronymic
 
-      @patient_question = @surname_patient + " " + @name_patient + " " + @patronymic_patient
+        @patient_question = @surname_patient + " " + @name_patient + " " + @patronymic_patient
 
-      #закидываем их в соответствующий массив
-      @patient_questions.push(@patient_question)
+        #закидываем их в соответствующий массив
+        @patient_questions.push(@patient_question)
+      end
     end
 
     #все врачи
