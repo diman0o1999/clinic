@@ -4,7 +4,8 @@ $(document).ready(function() {
 
     //текущий урл
     var url = window.location.href;
-    var host = 'http://localhost:3000';
+    //var host = 'http://localhost:3000';
+    var host = 'https://mighty-ocean-69682.herokuapp.com';
     url = url.replace (new RegExp (host, 'g'), '');
     //если текущий урл это врачи
     if(url == '/medics') {
