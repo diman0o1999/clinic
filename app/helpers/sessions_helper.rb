@@ -42,7 +42,10 @@ module SessionsHelper
 
   #роль пользователя
   def role
+    if !current_user.nil?
       current_user.role.role_name
+    end
+
   end
 
 end

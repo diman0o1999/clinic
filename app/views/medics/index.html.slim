@@ -4,7 +4,7 @@ section.page.section
   .inner
     #role-name
       - if !current_user.nil?
-        = role
+        .patient_id.hidden = @patient_id
     h2.title.title_for_page Наши врачи
     p.tagline Главное в медицине — это личность врача!
     p.page__desc Пусть будет хоть самое дорогое и современное оборудование, но если доктор за ним думает только о себе, своей зарплате и пациент для него всего лишь одна из трудовых единиц, у такого доктора лечиться не только неприятно, но и опасно. В нашей клинике мы собрали специалистов, которые живут своей работой, горят ею, сострадают и заботятся о своих пациентах. Наши доктора с самого начала стремились к самому лучшему, современному и надежному. Это настоящий коллектив единомышленников, сплоченных многолетней успешной совместной работой.
@@ -30,12 +30,25 @@ section.page.section
             = render 'forms/form'
 
         #list-medic
-        - if !current_user.nil?
-          p = form_for @medic_mark, url: {action: "mark"} do |f|
-            p = submit_tag "Оценить врача", :name => 'mark_btn'
 
   .page__remark
     .inner
       | Если у Вас возникли вопросы, Вы можете
       a href = "questions"  задать
       |  их и получить квалифицированную консультацию профессионалов «Клиники Доброго Стоматолога».
+
+  /всплывающая форма на врачах
+  .dop-block
+    .vspl_error
+      i.fa.fa-window-close.fa-3x.close_medic aria-hidden="true"
+      .vspl_error_slogan Для оценки врача нужно авторизоваться как пациент
+      .vspl_error_text = link_to "Войти", signin_path
+
+  .dop-block
+    .vspl_ok
+      .vspl_ok_slogan Спасибо, Ваша оценка принята!
+
+  .dop-block
+    .vspl_error_422
+      i.fa.fa-window-close.fa-3x.close_medic aria-hidden="true"
+      .vspl_error_422_slogan Вы уже оценивали этого врача

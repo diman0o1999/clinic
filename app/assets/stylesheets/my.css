@@ -409,20 +409,160 @@ blockquote {
     width: 150px;
 }
 .form-avatar{
-    ext-align: center;
+    text-align: center;
     width: 393px;
     margin: auto;
     margin-bottom: 20px;
 }
-
-
-
-
-
-
-
-
-
+.mark_medic{
+    display: flex;
+}
+.mark_medic select{
+    width: 5%;
+    height: 27px;
+    margin-right: 5px;
+}
+.mark_btn input{
+    background-color: #4e9c84;
+    border: none;
+    color: white;
+    padding: 8px;
+    border-radius: 20px;
+}
+.dop-block {
+    position: relative;
+    float: right;
+    right: 48%;
+    margin-top: 3%;
+}
+.vspl {
+    position: fixed;
+    z-index: 11;
+    background-color: #272626;
+    display: none;
+    opacity: 0.6;
+    height: 100%;
+    width: 100%;
+}
+.vspl_ok{
+    background-color: #4e9c84;
+    opacity: 1;
+    z-index: 20;
+    display: none;
+    position: fixed;
+    float: left;
+    left: 35%;
+    top: 30%;
+    width: 400px;
+    height: 200px;
+}
+.vspl_ok_slogan {
+    position: absolute;
+    top: 46%;
+    font-size: 20px;
+    color: white;
+    text-transform: uppercase;
+    text-align: center;
+    left: 4%;
+}
+.vspl_ok_text {
+    position: absolute;
+    left: 40%;
+    top: 73%;
+    font-size: 18px;
+    text-align: center;
+}
+.vspl_ok_text a{
+    color: white;
+    background-color: #3f7766;
+    padding: 10px;
+    border-radius: 12px;
+}
+.vspl_ok_text a:hover{
+    color: white;
+    text-decoration: none;
+}
+.close_medic{
+    position: absolute;
+    left: 358px;
+    top: -4px;
+    cursor: pointer;
+}
+.vspl_error{
+    background-color: #4e9c84;
+    opacity: 1;
+    z-index: 20;
+    display: none;
+    position: fixed;
+    float: left;
+    left: 35%;
+    top: 30%;
+    width: 400px;
+    height: 200px;
+}
+.vspl_error_slogan {
+    position: absolute;
+    top: 35%;
+    font-size: 20px;
+    color: white;
+    text-transform: uppercase;
+    text-align: center;
+}
+.vspl_error_text {
+    position: absolute;
+    left: 40%;
+    top: 73%;
+    font-size: 18px;
+    text-align: center;
+}
+.vspl_error_text a{
+    color: white;
+    background-color: #3f7766;
+    padding: 10px;
+    border-radius: 12px;
+}
+.vspl_error_text a:hover{
+    color: white;
+    text-decoration: none;
+}
+.vspl_error_422{
+    background-color: #4e9c84;
+    opacity: 1;
+    z-index: 20;
+    display: none;
+    position: fixed;
+    float: left;
+    left: 35%;
+    top: 30%;
+    width: 400px;
+    height: 200px;
+}
+.vspl_error_422_slogan {
+    position: absolute;
+    top: 45%;
+    font-size: 20px;
+    color: white;
+    text-transform: uppercase;
+    text-align: center;
+    left: 6%;
+}
+.vspl_error_422_text {
+    position: absolute;
+    left: 40%;
+    top: 73%;
+    font-size: 18px;
+    text-align: center;
+}
+.vspl_error_422_text a{
+    color: white;
+    background-color: #3f7766;
+    padding: 10px;
+    border-radius: 12px;
+}
+.vspl_error_422_text a:hover{
+    color: white;
+    text-decoration: none;
+}
 
 
 

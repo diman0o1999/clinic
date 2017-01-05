@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170103104648) do
+ActiveRecord::Schema.define(version: 20170105142533) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -75,17 +75,17 @@ ActiveRecord::Schema.define(version: 20170103104648) do
 
   create_table "mark_medics", force: :cascade do |t|
     t.integer  "medic_id"
-    t.integer  "user_id"
+    t.integer  "patient_id"
     t.integer  "mark"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["medic_id", "user_id"], name: "index_mark_medics_on_medic_id_and_user_id", unique: true, using: :btree
+    t.index ["medic_id", "patient_id"], name: "index_mark_medics_on_medic_id_and_patient_id", unique: true, using: :btree
   end
 
   create_table "medics", force: :cascade do |t|
     t.string   "daywork1"
     t.string   "post1"
-    t.string   "foto"
+    t.string   "avatar"
     t.datetime "created_at",               null: false
     t.datetime "updated_at",               null: false
     t.string   "about"
@@ -101,7 +101,7 @@ ActiveRecord::Schema.define(version: 20170103104648) do
   create_table "patients", force: :cascade do |t|
     t.integer  "user_id"
     t.bigint   "tel_number"
-    t.string   "foto"
+    t.string   "avatar"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

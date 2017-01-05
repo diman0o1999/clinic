@@ -25,9 +25,6 @@ Rails.application.routes.draw do
   #формируем страницу врачей
   post '/medics/:id', to: 'medics#select_medics'
 
-  #оцениваем врачей
-  post '/medics', to: 'medics#mark'
-
   #формируем прайс
   post '/prices/:id', to: 'prices#select_prices'
 
