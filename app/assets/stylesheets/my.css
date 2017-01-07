@@ -418,9 +418,10 @@ blockquote {
     display: flex;
 }
 .mark_medic select{
-    width: 5%;
-    height: 27px;
+    width: 4%;
+    height: 26px;
     margin-right: 5px;
+    margin-top: 5px;
 }
 .mark_btn input{
     background-color: #4e9c84;
@@ -4331,7 +4332,7 @@ img.mfp-img {
     list-style-type: none;
 }
 .review__item:nth-child(odd) {
-
+    background-color: #f7f7f7;
 }
 .review__list_bordered .review__item {
     border-bottom: 1px solid #e8e8e8;
@@ -4380,10 +4381,8 @@ img.mfp-img {
     margin-top: 26px;
 }
 .question__list {
-    padding-left: 30px;
     list-style: none;
     margin: 0 0 50px;
-    background-color: #f1f1f1;
 }
 .question__list:last-child {
 
@@ -4396,7 +4395,7 @@ img.mfp-img {
     border-top: 1px solid #e8e8e8;
 }
 .question__item:nth-child(odd) {
-
+    background-color: #f7f7f7;
 }
 .question__block {
     margin: 0;
@@ -5827,8 +5826,6 @@ img.mfp-img {
     .review__item {
         padding: 50px 0;
         list-style-type: none;
-        background-color: #f3f3f3;
-        margin: 10px;
     }
     .review__head {
         float: left;

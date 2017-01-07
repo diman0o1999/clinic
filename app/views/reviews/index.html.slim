@@ -1,5 +1,6 @@
 - @title = "Отзывы"
-.inner
+
+section.page.section.review
   .header-h1 Отзывы о нашей стоматологии
 
   /если пользователь залогинен
@@ -7,7 +8,7 @@
     /и этот пользователь - пациент, то можем добавить отзыв (врач не может)
     - if role == "Пациент"
       .header-h1 Добавить отзыв
-      p
+      .inner
         = form_for @review, url: {action: "create"} do |f|
           - if @review.errors.any?
             #error_explanation
@@ -17,7 +18,7 @@
                   li = message
           .form-inline
             .form-user.review
-              = f.text_area :text_reviews, :placeholder => "Текст отзыва*", :value => "#{@text_reviews}"
+              = f.text_area :text_reviews, :required => true, :placeholder => "Текст отзыва*", :value => "#{@text_reviews}"
             .form-user-btn
               = f.submit("Добавить отзыв")
             .form-gr-4
@@ -28,12 +29,13 @@
         /показываем только те, у которых статус = 1, т.е. опубликован
         - if review.status_review == 1
           li.review__item
-            blockquote.review__block
-              header.review__head
-                h3.review__author = review.surname + " " +  review.user_name + " " + review.patronymic
-                time.review__date = review.created_at.strftime("%d %b. %Y %H:%M")
-              .review__body
-                p = review.text_reviews
+            .inner
+              blockquote.review__block
+                header.review__head
+                  h3.review__author = review.surname + " " +  review.user_name + " " + review.patronymic
+                  time.review__date = review.created_at.strftime("%d %B. %Y %H:%M")
+                .review__body
+                  p = review.text_reviews
 
   /если не залогинен
   - elsif current_user.nil?
@@ -45,23 +47,25 @@
       /показываем только те, у которых статус = 1, т.е. опубликован
       - if review.status_review == 1
         li.review__item
-          blockquote.review__block
-            header.review__head
-              h3.review__author = review.surname + " " +  review.user_name + " " + review.patronymic
-              time.review__date = review.created_at.strftime("%d %b. %Y %H:%M")
-            .review__body
-              p = review.text_reviews
+          .inner
+            blockquote.review__block
+              header.review__head
+                h3.review__author = review.surname + " " +  review.user_name + " " + review.patronymic
+                time.review__date = review.created_at.strftime("%d %B %Y %H:%M")
+              .review__body
+                p = review.text_reviews
 
   /если пользователь админ, то показываем все отзывы с возможность опубликовать или снять с публикации
   - if !current_user.nil? && admin?
     - @reviews.each do |review|
       li.review__item
         blockquote.review__block
-          header.review__head
-            h3.review__author = review.surname + " " +  review.user_name + " " + review.patronymic
-            time.review__date = review.created_at.strftime("%d %b. %Y %H:%M")
-          .review__body
-            p = review.text_reviews
+          .inner
+            header.review__head
+              h3.review__author = review.surname + " " +  review.user_name + " " + review.patronymic
+              time.review__date = review.created_at.strftime("%d %B %Y %H:%M")
+            .review__body
+              p = review.text_reviews
 
       - if review.status_review == 0
         .nosuc = "Не опубликован"

@@ -1,0 +1,19 @@
+- @title = "Заявки"
+.inner
+  .header-h1 Заявки
+
+  ul.nav.nav-tabs.nav-justified
+    - @filials.each_with_index do |filial, index|
+      li
+        a data-toggle="tab" href="#panel#{index+1}" = filial.metro
+        .hidden
+          = filial.id
+
+    .tab-content
+      table.users_role
+        tbody
+          tr
+            th Пациент
+            th Телефон
+            th Дата записи
+          tbody.list_applications

@@ -1,7 +1,19 @@
 section.review
   ul.review__list
-    li.review__item
-      .inner
-        .btn-wrap
-          a.btn.btn_theme_bordered.btn_size_m.review__new-btn href="#"  Написать отзыв
-          a.btn.btn_theme_bordered.btn_size_m.review__all-btn href="#"  Посмотреть все отзывы
+    - @reviews.each do |review|
+      /показываем только те, у которых статус = 1, т.е. опубликован
+      - if review.status_review == 1
+        li.review__item
+          .inner
+            blockquote.review__block
+              header.review__head
+                h3.review__author = review.surname + " " +  review.user_name + " " + review.patronymic
+                time.review__date = review.created_at.strftime("%d %B %Y %H:%M")
+              .review__body
+                p = review.text_reviews
+
+  .review__item
+    .inner
+      .btn-wrap
+        a.btn.btn_theme_bordered.btn_size_m.review__new-btn href="#"  Написать отзыв
+        a.btn.btn_theme_bordered.btn_size_m.review__all-btn href="#"  Посмотреть все отзывы

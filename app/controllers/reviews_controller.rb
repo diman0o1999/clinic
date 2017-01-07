@@ -45,6 +45,17 @@ class ReviewsController < ApplicationController
         flash[:success] = "Отзыв на модерации!"
         redirect_to reviews_path
       else
+        #все отзывы упорядочены по дате
+        @reviews = User.joins(:reviews).order('created_at DESC').select(
+            'users.id',
+            'users.surname',
+            'users.patronymic',
+            'users.user_name',
+            'reviews.created_at',
+            'reviews.text_reviews',
+            'reviews.status_review',
+            'reviews.id'
+        )
         @text_reviews = params[:review][:text_reviews]
         render 'index'
       end

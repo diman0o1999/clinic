@@ -101,9 +101,9 @@
                   li = message
           .form-inline
             .form-avatar
-              = f.file_field :avatar
+              = f.file_field :avatar, :required => true
             .form-user
-              = f.text_field :post1, :placeholder => "Должность №1*"
+              = f.text_field :post1, :required => true, :placeholder => "Должность №1*"
             .form-user
               = f.text_field :post2, :placeholder => "Должность №2*"
             .form-user
@@ -131,7 +131,7 @@
                   .filcheck = f.check_box :departaments, { :multiple => true }, "#{departamente.id}", nil
 
             .form-user.text_fil_area
-              = f.text_area :about, :placeholder => "О вас*"
+              = f.text_area :about, :required => true, :placeholder => "О вас*"
             .form-user
               = f.hidden_field :user_id, :value => "#{@user.id}"
             .form-user-btn
@@ -167,7 +167,7 @@
                   li = message
           .form-inline
             .form-avatar
-              = f.file_field :avatar
+              = f.file_field :avatar, :required => true
             .form-user
               = f.telephone_field :tel_number, :required => true, :placeholder => "Телефон*", :minlength => 5, :value => "#{@tel_number}"
             .form-user

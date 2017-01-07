@@ -10,7 +10,7 @@ p
     .form-inline
       .form-avatar
         = image_tag(@patient.avatar_url) if @patient.avatar?
-        = f.file_field :avatar
+        = f.file_field :avatar, :required => true
         = f.hidden_field :avatar_cache
       .form-user
         = f.telephone_field :tel_number, :required => true, :placeholder => "Телефон*", :minlength => 5, :value => "#{@patient_tel}"

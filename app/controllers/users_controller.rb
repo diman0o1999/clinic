@@ -8,7 +8,7 @@ class UsersController < ApplicationController
 
   def index
     #если текущий юзер - админ, то получаем инфу по всем юзерам
-    if current_user.admin?
+    if !current_user.nil? && admin?
       @users = User.left_outer_joins(:role).select('users.id', 'users.user_name', 'users.surname', 'users.patronymic', 'roles.role_name')
     else
       redirect_to root_path
@@ -76,6 +76,8 @@ class UsersController < ApplicationController
   end
 
   def update
+    @roles = Role.first(2)
+
     if @user.update_attributes(user_params)
       flash[:success] = "Профиль обновлен!"
       redirect_to @user
@@ -99,8 +101,11 @@ class UsersController < ApplicationController
         flash[:success] = "Готово!"
         redirect_to current_user
       else
+        @user = current_user
+        @roles = Role.first(2)
+        @role = User.find(params[:id]).role
         @tel_number = params[:patient][:tel_number]
-        render current_user
+        render 'show'
       end
     end
     #врач
@@ -116,17 +121,26 @@ class UsersController < ApplicationController
         @departament_id = params[:medic][:departaments]
 
         #перебираем все отмеченные филиалы и пишем в соединительную таблицу
-        @filial_id.each do |fil|
-          Filials_Medic.create(:medic_id => @medic_id, :filial_id => fil)
+        if !@filial_id.nil?
+          @filial_id.each do |fil|
+            Filials_Medic.create(:medic_id => @medic_id, :filial_id => fil)
+          end
         end
+
         #перебираем все отмеченные отделения и пишем в соединительную таблицу
-        @departament_id.each do |dep|
-          Departaments_Medic.create(:medic_id => @medic_id, :departament_id => dep)
+        if !@departament_id.nil?
+          @departament_id.each do |dep|
+            Departaments_Medic.create(:medic_id => @medic_id, :departament_id => dep)
+          end
         end
 
         flash[:success] = "Готово!"
         redirect_to current_user
       else
+        @user = current_user
+        @filials = Filial.all
+        @departaments = Departament.all
+        @role = User.find(params[:id]).role
         @post1 = params[:medic][:post1]
         @post2 = params[:medic][:post2]
         @post3 = params[:medic][:post3]
@@ -134,7 +148,7 @@ class UsersController < ApplicationController
         @daywork2 = params[:medic][:daywork2]
         @daywork3 = params[:medic][:daywork3]
         @about = params[:medic][:about]
-        render current_user
+        render 'show'
       end
     end
 

@@ -19,6 +19,9 @@ Rails.application.routes.draw do
   get '/licenses',  to: 'main#licenses'
   get '/contacts',  to: 'main#contacts'
 
+  #формируем страницу всех заявок(просмотр только для админа)
+  post '/forms/:id', to: 'forms#select_forms'
+
   #формируем страницу дипломы
   post '/diploms/:id', to: 'diploms#select_diploms'
 

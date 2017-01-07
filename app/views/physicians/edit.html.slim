@@ -10,10 +10,10 @@ p
     .form-inline
       .form-avatar
         = image_tag(@medic.avatar_url) if @medic.avatar?
-        = f.file_field :avatar
+        = f.file_field :avatar, :required => true
         = f.hidden_field :avatar_cache
       .form-user
-        = f.text_field :post1, :placeholder => "Должность №1*", :value => "#{@medic_post1}"
+        = f.text_field :post1, :required => true, :placeholder => "Должность №1*", :value => "#{@medic_post1}"
       .form-user
         = f.text_field :post2, :placeholder => "Должность №2*", :value => "#{@medic_post2}"
       .form-user
@@ -41,6 +41,6 @@ p
             .filcheck = f.check_box :departaments, { :multiple => true }, "#{departamente.id}", nil
 
       .form-user.text_fil_area
-        = f.text_area :about, :placeholder => "О вас*", :value => "#{@medic_about}"
+        = f.text_area :about, :required => true, :placeholder => "О вас*", :value => "#{@medic_about}"
       .form-user-btn
         = submit_tag "ГОТОВО", :name => 'medic_btn'

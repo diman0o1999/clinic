@@ -71,7 +71,7 @@ class MedicsController < ApplicationController
 
     else
       respond_to do |format|
-          format.json { render json: {:mark_medic => 'Авторизуйтесь как пациент'}, :status => 422 }
+          format.json { render json: {:mark_medic => 'Авторизуйтесь как пациент'}, :status => 423 }
       end
     end
 

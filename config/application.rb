@@ -8,7 +8,8 @@ Bundler.require(*Rails.groups)
 
 module MyRuby
   class Application < Rails::Application
-#по умолчанию создаем файлы slim
+
+    #по умолчанию создаем файлы slim
     config.generators do |g|
       g.template_engine :slim
     end

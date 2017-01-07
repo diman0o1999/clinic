@@ -1,5 +1,5 @@
 - @title = "Вопрос-ответ"
-.inner
+section.page.section.question
   .header-h1 Вопросы врачам клиники
 
   /если пользователь залогинен
@@ -7,7 +7,7 @@
     /и этот пользователь - пациент, то можем добавить отзыв (врач не может)
     - if role == "Пациент"
       .header-h1 Добавить вопрос
-      p
+      .inner
         = form_for @question, url: {action: "create"} do |f|
           - if @question.errors.any?
             #error_explanation
@@ -17,7 +17,7 @@
                   li = message
           .form-inline
             .form-user.review
-              = f.text_area :text_question, :placeholder => "Текст вопроса*", :value => "#{@text_question}"
+              = f.text_area :text_question, :required => true, :placeholder => "Текст вопроса*", :value => "#{@text_question}"
             .form-user-btn
               = f.submit("Добавить вопрос")
             .form-gr-4
@@ -35,7 +35,7 @@
                   h3.question__author = "Пациент: "
                   /вынимаем из массива пациентов всех пациентов по порядку в соответствии с индексом
                   div = @patient_questions[index]
-                  time.question__date = question.created_at.strftime("%d %b. %Y %H:%M")
+                  time.question__date = question.created_at.strftime("%d %B %Y %H:%M")
                 .question__body = question.text_question
             dd.question__item
               .inner.block
@@ -62,7 +62,7 @@
                 h3.question__author = "Пациент: "
                 /вынимаем из массива пациентов всех пациентов по порядку в соответствии с индексом
                 div = @patient_questions[index]
-                time.question__date = question.created_at.strftime("%d %b. %Y %H:%M")
+                time.question__date = question.created_at.strftime("%d %B %Y %H:%M")
               .question__body = question.text_question
           dd.question__item
             .inner.block
@@ -83,7 +83,7 @@
               h3.question__author = "Пациент: "
               /вынимаем из массива пациентов всех пациентов по порядку в соответствии с индексом
               div = @patient_questions[index]
-              time.question__date = question.created_at.strftime("%d %b. %Y %H:%M")
+              time.question__date = question.created_at.strftime("%d %B %Y %H:%M")
             .question__body = question.text_question
         dd.question__item
           .inner.block

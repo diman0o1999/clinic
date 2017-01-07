@@ -64,6 +64,16 @@ class PhysiciansController < ApplicationController
       flash[:success] = "Профиль обновлен!"
       redirect_to current_user
     else
+      @filials = Filial.all
+      @departaments = Departament.all
+      @role = User.find(params[:id]).role
+      @post1 = params[:medic][:post1]
+      @post2 = params[:medic][:post2]
+      @post3 = params[:medic][:post3]
+      @daywork1 = params[:medic][:daywork1]
+      @daywork2 = params[:medic][:daywork2]
+      @daywork3 = params[:medic][:daywork3]
+      @about = params[:medic][:about]
       render 'edit'
     end
   end

@@ -7,4 +7,12 @@ class Medic < ApplicationRecord
   has_and_belongs_to_many :departaments
   belongs_to :user
   has_many :questions
+
+  validates_presence_of :post1, :avatar, :about, :message => "Заполните поле!"
+  validates_length_of :post1, :minimum => 5, :message => "Минимальная длина 5 символа!"
+  validates_length_of :about, :minimum => 100, :message => "Минимальная длина 100 символов!"
+  validates_format_of :post1, :about, :with => /[\u0410-\u044F]+/i, :message => "Пишите русскими буквами!"
+
+
+
 end

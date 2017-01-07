@@ -65,3 +65,8 @@ group :production do
   # For Heroku deployment
   gem 'rails_12factor'
 end
+
+gem 'capybara'
+group :test do
+  gem 'factory_girl_rails'
+end

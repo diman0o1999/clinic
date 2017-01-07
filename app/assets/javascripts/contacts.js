@@ -13,27 +13,10 @@ $(document).ready(function() {
         $('.form-gr-4 input').val(id_filial);
     });
 
-    //очищаем сообщения об ошибках и удачных отправлениях при переходе на другую вкладку в контактах
+    //очищаем сообщения об ошибках и удачных отправлениях при переходе на другую вкладку в контактах/во врачах
     filials.click(function () {
         $(".success").empty();
         $(".error").empty();
-    });
-
-    //обрабатываем json ответ ajax формы записи клиента
-    $(".new_form").on("ajax:success", function(xhr, data) {
-        $(".success").empty();
-        $(".error").empty();
-        $(this).append("<div class = 'success'>" + data.form.form_name + ", Ваша заявка принята!" + "</div>");
-        $(this).find('input').val('');
-    }).on("ajax:error", function(xhr, data) {
-        var mass = data.responseJSON;
-        $(".error").empty();
-        for (var i in mass) {
-            for (var j in mass[i]) {
-                var error = mass[i][j];
-                $(this).append("<div class = 'error'>" + error + "</div>");
-            }
-        }
     });
 
 });
