@@ -1,1 +1,11 @@
-h1 Test
+h1 Запись на прием
+p Имя пациента:
+p = @form_mail.form_name
+p Контактный телефон:
+p = @form_mail.telephone
+- if @form_mail.filial_id == 1
+  p Филиал: Пионерская
+- elsif @form_mail.filial_id == 2
+  p Филиал: Большевиков
+- else
+  p Филиал: Ленинский

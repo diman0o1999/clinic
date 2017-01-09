@@ -35,7 +35,7 @@ section.page.section.question
                   h3.question__author = "Пациент: "
                   /вынимаем из массива пациентов всех пациентов по порядку в соответствии с индексом
                   div = @patient_questions[index]
-                  time.question__date = question.created_at.strftime("%d %B %Y %H:%M")
+                  time.question__date = l(question.created_at, format: "%d %B %Y %H:%M", :locale => 'ru')
                 .question__body = question.text_question
             dd.question__item
               .inner.block
@@ -62,7 +62,7 @@ section.page.section.question
                 h3.question__author = "Пациент: "
                 /вынимаем из массива пациентов всех пациентов по порядку в соответствии с индексом
                 div = @patient_questions[index]
-                time.question__date = question.created_at.strftime("%d %B %Y %H:%M")
+                time.question__date = l(question.created_at, format: "%d %B %Y %H:%M", :locale => 'ru')
               .question__body = question.text_question
           dd.question__item
             .inner.block
@@ -83,7 +83,7 @@ section.page.section.question
               h3.question__author = "Пациент: "
               /вынимаем из массива пациентов всех пациентов по порядку в соответствии с индексом
               div = @patient_questions[index]
-              time.question__date = question.created_at.strftime("%d %B %Y %H:%M")
+              time.question__date = l(question.created_at, format: "%d %B %Y %H:%M", :locale => 'ru')
             .question__body = question.text_question
         dd.question__item
           .inner.block
