@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   resources :reviews
   resources :users
   resources :questions
+  resources :services
   resources :sessions, only: [:new, :create, :destroy]
 
   root 'main#index'
@@ -18,6 +19,18 @@ Rails.application.routes.draw do
   get '/equip',  to: 'main#equip'
   get '/licenses',  to: 'main#licenses'
   get '/contacts',  to: 'main#contacts'
+
+  #услуги
+  get '/therapy',  to: 'services#therapy'
+  get '/prosthetics',  to: 'services#prosthetics'
+  get '/surgery',  to: 'services#surgery'
+  get '/periodontics',  to: 'services#periodontics'
+  get '/orthodontics',  to: 'services#orthodontics'
+  get '/children',  to: 'services#children'
+  get '/radiology',  to: 'services#radiology'
+  get '/implants',  to: 'services#implants'
+  get '/anesthesia',  to: 'services#anesthesia'
+  get '/aesthetic',  to: 'services#aesthetic'
 
   #формируем страницу всех заявок(просмотр только для админа)
   post '/forms/:id', to: 'forms#select_forms'

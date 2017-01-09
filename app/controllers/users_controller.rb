@@ -9,7 +9,8 @@ class UsersController < ApplicationController
   def index
     #если текущий юзер - админ, то получаем инфу по всем юзерам
     if !current_user.nil? && admin?
-      @users = User.left_outer_joins(:role).select('users.id', 'users.user_name', 'users.surname', 'users.patronymic', 'roles.role_name')
+      #@users = User.left_outer_joins(:role).select('users.id', 'users.user_name', 'users.surname', 'users.patronymic', 'roles.role_name')
+      @roles = Role.all
     else
       redirect_to root_path
     end
@@ -107,9 +108,8 @@ class UsersController < ApplicationController
         @tel_number = params[:patient][:tel_number]
         render 'show'
       end
-    end
     #врач
-    if params[:medic_btn]
+    elsif params[:medic_btn]
       @medic = Medic.new(medic_params)
       if @medic.save
 
@@ -150,10 +150,9 @@ class UsersController < ApplicationController
         @about = params[:medic][:about]
         render 'show'
       end
-    end
 
     #публикуем врача
-    if params[:public_btn]
+    elsif params[:public_btn]
       #врач, который записался в базу
       @medic_public = Medic.find_by(user_id: params[:id])
       if @medic_public.update_attributes(:status_medic => 1)
@@ -162,10 +161,9 @@ class UsersController < ApplicationController
       else
         render current_user
       end
-    end
 
     #убираем с публикации врача
-    if params[:nopublic_btn]
+    elsif params[:nopublic_btn]
       #врач, который записался в базу
       @medic_public = Medic.find_by(user_id: params[:id])
       if @medic_public.update_attributes(:status_medic => 0)
@@ -174,7 +172,18 @@ class UsersController < ApplicationController
       else
         render current_user
       end
+
+    else
+  #делаем выборку на вкладке "все юзеры" из пол админа
+    #если текущий юзер - админ, то получаем инфу по всем юзерам
+    if !current_user.nil? && admin?
+      #все юзеры в зависимости от выбранной роли
+      @users =  Role.find(params[:id]).users.order('id ASC')
+      respond_to do |format|
+        format.json { render json: @users }
+      end
     end
+  end
 
   end
 

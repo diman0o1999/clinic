@@ -366,6 +366,9 @@ address {
     width: 60%;
     margin: auto;
 }
+.article__list_for_service{
+    width: auto;
+}
 .article textarea{
     height: 500px;
     width: 100%;
@@ -566,15 +569,93 @@ blockquote {
 }
 
 
+.vspl {
+    position: fixed;
+    z-index: 300;
+    background-color: #272626;
+    display: none;
+    opacity: 0.6;
+}
+.vspl_forma{
+    background-color: #4e9c84;
+    opacity: 1;
+    z-index: 310;
+    display: none;
+    position: fixed;
+    float: left;
+    left: 35%;
+    top: 30%;
+    width: 640px;
+    height: 340px;
+}
+.vspl_forma_slogan {
+    position: absolute;
+    top: 46%;
+    font-size: 20px;
+    color: white;
+    text-transform: uppercase;
+    text-align: center;
+    left: 4%;
+}
+.close_forma{
+    position: absolute;
+    left: 598px;
+    top: -4px;
+    cursor: pointer;
+    color: #4e9c84;
+}
+.modal_forma{
+    height: 50px;
+    line-height: 50px;
+    font-size: 20px;
+}
+.modal_forma_in{
+    height: 50px;
+    line-height: 50px;
+    font-size: 20px;
+    display: none;
+}
 
 
 
+.profil a{
+    color: #009688 !important;
+    text-decoration: underline;
+}
+.swiper-container {
+    width: 100%;
+    height: 300px;
+    margin: 20px auto;
+}
+.swiper-slide {
+    text-align: center;
+    font-size: 18px;
+    background: #fff;
 
-
-
-
-
-
+    /* Center slide text vertically */
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+}
+.swiper-button-prev, .swiper-button-next {
+    background-image: none !important;
+    top: 280px !important;
+}
+.swiper-slide img{
+    height: 160px;
+}
+.swiper-container {
+    margin-bottom: 40px !important;
+}
 
 
 
@@ -926,6 +1007,7 @@ hr {
 }
 .badge__fig img{
     height: 160px;
+    max-width: none;
 }
 .clinic_select a {
     text-decoration: none;
@@ -4742,6 +4824,7 @@ img.mfp-img {
     list-style: none;
     margin: 0 -31px;
     color: #545454;
+    margin-bottom: 60px;
 }
 .article .price__list {
     padding-left: 0;
@@ -4807,7 +4890,7 @@ img.mfp-img {
     display: inline-block;
     vertical-align: top;
     width: 132px;
-    font-size: 13px;
+    font-size: 11px;
     text-align: left;
 }
 .badge__name {

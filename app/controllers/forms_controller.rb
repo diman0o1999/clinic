@@ -1,7 +1,10 @@
 class FormsController < ApplicationController
   def index
-
-    @filials = Filial.all
+    if !current_user.nil? && admin?
+      @filials = Filial.all
+    else
+      redirect_to root_path
+    end
 
   end
 
