@@ -155,7 +155,6 @@ $(document).ready(function() {
 
         //обрабатываем json ответ ajax формы оценки врача
         $("body").on("ajax:success", ".mark_medic", function (xhr, data) {
-            $(".vspl").css('display', 'block');
             $(".vspl_ok").css('display', 'block');
 
             //по id находим элемент
@@ -172,11 +171,9 @@ $(document).ready(function() {
         }).on("ajax:error", function (xhr, data) {
             var status = data.status;
             if (status == 500) {
-                $(".vspl").css('display', 'block');
                 $(".vspl_error_422").css('display', 'block');
             }
             if (status == 423) {
-                $(".vspl").css('display', 'block');
                 $(".vspl_error").css('display', 'block');
             }
         });
@@ -184,17 +181,14 @@ $(document).ready(function() {
         //закрываем всплывающее окно на врачах
         $('body').on('click', '.close_medic', function () {
             $(".vspl_error").css('display', 'none');
-            $(".vspl").css('display', 'none');
         });
 
         $('body').on('click', '.close_medic', function () {
             $(".vspl_ok").css('display', 'none');
-            $(".vspl").css('display', 'none');
         });
 
         $('body').on('click', '.close_medic', function () {
             $(".vspl_error_422").css('display', 'none');
-            $(".vspl").css('display', 'none');
         })
     }
 
