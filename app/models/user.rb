@@ -12,8 +12,8 @@ class User < ApplicationRecord
 
   validates_presence_of :user_name, :surname, :patronymic, :email, :role_id => "Заполните поле"
   validates_length_of :user_name, :surname, :patronymic, :minimum => 3, :message => "Минимальная длина 3 символа"
-  validates_format_of :user_name, :surname, :patronymic, :with => /[\u0410-\u044F]+/i, :message => "Пишите русскими буквами"
-  validates_format_of :email, :with => /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i, :message => "Неккоректный email"
+  validates_format_of :user_name, :surname, :patronymic, :with => /[\u0410-\u044F]+/i, :message => "пишите русскими буквами"
+  validates_format_of :email, :with => /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i, :message => "неккоректный формат"
 
   #проверка уникальности email в базе с учетом регистра
   validates_uniqueness_of :email, :case_sensitive => false

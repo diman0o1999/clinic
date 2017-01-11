@@ -1,18 +1,20 @@
-.header-h1 Редактируем карточку пациента
-p
-  = form_for @patient, url: {action: "update"}, :html => {:multipart => true} do |f|
-    - if @patient.errors.any?
-      #error_explanation
-        h2 = "#{pluralize(@patient.errors.count, "error")}: обратите внимания на следующие поля:"
-        ul
-          - @patient.errors.full_messages.each do |message|
-            li = message
-    .form-inline
-      .form-avatar
-        = image_tag(@patient.avatar_url) if @patient.avatar?
-        = f.file_field :avatar, :required => true
-        = f.hidden_field :avatar_cache
-      .form-user
-        = f.telephone_field :tel_number, :required => true, :placeholder => "Телефон*", :minlength => 5, :value => "#{@patient_tel}"
-      .form-user-btn
-        = submit_tag "ГОТОВО", :name => 'patient_btn'
+- @title = "Редактируем карточку пациента"
+.inner
+  .header-h1 Редактируем карточку пациента
+  p
+    = form_for @patient, url: {action: "update"}, :html => {:multipart => true} do |f|
+      - if @patient.errors.any?
+        #error_explanation
+          h2 = "Обратите внимания на следующие поля:"
+          ul
+            - @patient.errors.full_messages.each do |message|
+              li = message
+      .form-inline
+        .form-avatar
+          = image_tag(@patient.avatar_url) if @patient.avatar?
+          = f.file_field :avatar
+          = f.hidden_field :avatar_cache
+        .form-user
+          = f.telephone_field :tel_number, :required => true, :placeholder => "Телефон*", :minlength => 5, :value => "#{@patient_tel}"
+        .form-user-btn
+          = submit_tag "ГОТОВО", :name => 'patient_btn'

@@ -95,7 +95,7 @@
         = form_for @medic, url: {action: "create_dop_info"}, :html => {:multipart => true} do |f|
           - if @medic.errors.any?
             #error_explanation
-              h2 = "#{pluralize(@medic.errors.count, "error")}: обратите внимания на следующие поля:"
+              h2 = "Обратите внимания на следующие поля:"
               ul
                 - @medic.errors.full_messages.each do |message|
                   li = message
@@ -161,7 +161,7 @@
         = form_for @patient, url: {action: "create_dop_info"}, :html => {:multipart => true} do |f|
           - if @patient.errors.any?
             #error_explanation
-              h2 = "#{pluralize(@patient.errors.count, "error")}: обратите внимания на следующие поля:"
+              h2 = "Обратите внимания на следующие поля:"
               ul
                 - @patient.errors.full_messages.each do |message|
                   li = message

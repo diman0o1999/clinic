@@ -7,9 +7,8 @@ class UsersController < ApplicationController
 
 
   def index
-    #если текущий юзер - админ, то получаем инфу по всем юзерам
+    #если текущий юзер - админ
     if !current_user.nil? && admin?
-      #@users = User.left_outer_joins(:role).select('users.id', 'users.user_name', 'users.surname', 'users.patronymic', 'roles.role_name')
       @roles = Role.all
     else
       redirect_to root_path

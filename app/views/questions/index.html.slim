@@ -11,7 +11,7 @@ section.page.section.question
         = form_for @question, url: {action: "create"} do |f|
           - if @question.errors.any?
             #error_explanation
-              h2 = "#{pluralize(@question.errors.count, "error")}: обратите внимания на следующие поля:"
+              h2 = "Обратите внимания на следующие поля:"
               ul
                 - @question.errors.full_messages.each do |message|
                   li = message
