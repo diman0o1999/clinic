@@ -8,8 +8,8 @@ describe User do
       patronymic: "Тестовое отчество",
       email: "user@example.com",
       password: "qwerty",
-      password_confirmation: "qwerty",
-      role_id: 2)
+      password_confirmation: "qwerty"
+  )
   }
 
   subject { @user }
@@ -22,7 +22,6 @@ describe User do
   it { should respond_to(:password_digest) }
   it { should respond_to(:password) }
   it { should respond_to(:password_confirmation) }
-  it { should respond_to(:role_id) }
 
   it { should be_valid }
 
@@ -53,8 +52,8 @@ describe User do
   end
 
   describe "when role is not present" do
-    before { @user.role_id = nil }
-    it { should_not be_valid }
+    before { @user.role_id = 2 }
+    it { should be_valid }
   end
 
   #провальная валидация на длину
@@ -134,50 +133,6 @@ describe User do
       it { should_not eq user_for_invalid_password }
     end
   end
-
-
-  describe "signup page" do
-
-    before { visit signup_path }
-
-    let(:submit) { "ЗАРЕГИСТРИРОВАТЬСЯ" }
-
-    describe "with invalid information" do
-      it "should not create a user" do
-        expect { click_button submit }.not_to change(User, :count)
-      end
-    end
-
-    describe "with valid information" do
-      before do
-        fill_in "user[user_name]", with: "Тестовое имя"
-        fill_in "user[surname]", with: "Тестовая фамилия"
-        fill_in "user[patronymic]", with: "Тестовое отчество"
-        fill_in "user[email]", with: "user@example.com"
-        fill_in "user[password]", with: "qwerty"
-        fill_in "user[password_confirmation]", with: "qwerty"
-        select "Врач", from: "user_role_id"
-      end
-
-      it "should create a user" do
-        expect { click_button submit }.to change(User, :count).by(1)
-      end
-    end
-  end
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
   #валидация связей
   it 'has one role' do
