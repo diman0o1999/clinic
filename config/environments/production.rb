@@ -69,11 +69,10 @@ Rails.application.configure do
   config.action_mailer.default_url_options = { :host => 'powerful-scrubland-12299.herokuapp.com' }
 
   config.action_mailer.delivery_method = :smtp
-  config.action_mailer.default :charset => "utf-8"
   config.action_mailer.smtp_settings = {
       :address => "smtp.gmail.com",
       :port => "587",
-      :domain => "powerful-scrubland-12299.herokuapp.com",
+      :domain => "gmail.com",
       :user_name => "m.ryadn@@gmail.com",
       :password => "89110907082",
       :authentication => "plain",
