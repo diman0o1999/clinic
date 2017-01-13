@@ -33,7 +33,7 @@ section.page.section.review
               blockquote.review__block
                 header.review__head
                   h3.review__author = review.surname + " " +  review.user_name + " " + review.patronymic
-                  time.review__date = l(review.created_at, format: "%d %B %Y %H:%M", :locale => 'ru')
+                  time.review__date = review.created_at.strftime("%d-%m-%Y %H:%M")
                 .review__body
                   p = review.text_reviews
 
@@ -51,7 +51,7 @@ section.page.section.review
             blockquote.review__block
               header.review__head
                 h3.review__author = review.surname + " " +  review.user_name + " " + review.patronymic
-                time.review__date = l(review.created_at, format: "%d %B %Y %H:%M", :locale => 'ru')
+                time.review__date = review.created_at.strftime("%d-%m-%Y %H:%M")
               .review__body
                 p = review.text_reviews
 
@@ -63,7 +63,7 @@ section.page.section.review
           .inner
             header.review__head
               h3.review__author = review.surname + " " +  review.user_name + " " + review.patronymic
-              time.review__date = l(review.created_at, format: "%d %B %Y %H:%M", :locale => 'ru')
+              time.review__date = review.created_at.strftime("%d-%m-%Y %H:%M")
             .review__body
               p = review.text_reviews
 
