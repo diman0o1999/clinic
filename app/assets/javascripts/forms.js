@@ -47,48 +47,37 @@ $(document).ready(function() {
     var arr = url.split('/');
     var last_url = arr[arr.length-1];
 
+    //ответ ajax
+    var json = function (data) {
+        var box = $('.list_applications');
+        box.empty();
+        data.forEach (function(file){
+            var date = new Date(file.created_at);
+            box.append(
+                "<tr>" +
+                "<td>" + file.form_name + "</td>" +
+                "<td>" + file.telephone + "</td>" +
+                "<td>" + formatDate(date) + "</td>" +
+                "</tr>"
+            );
+        });
+    };
+
     //если текущий урл это заявки
     if(last_url == 'forms') {
 
         //выборка заявок по умолчанию на первый филиал
             $.post(
                 "/forms/1",
-                function (data) {
-                    var box = $('.list_applications');
-                    box.empty();
-                    data.forEach (function(file){
-                        var date = new Date(file.created_at);
-                        box.append(
-                            "<tr>" +
-                            "<td>" + file.form_name + "</td>" +
-                            "<td>" + file.telephone + "</td>" +
-                            "<td>" + formatDate(date) + "</td>" +
-                            "</tr>"
-                        );
-                    });
-                }
+                json
             );
-
 
         //выборка заявок в зависимости от филиала
         filials.click(function () {
             var num = $(this).find('.hidden').text();
             $.post(
                 "/forms/" + num,
-                function (data) {
-                    var box = $('.list_applications');
-                    box.empty();
-                    data.forEach (function(file){
-                        var date = new Date(file.created_at);
-                        box.append(
-                            "<tr>" +
-                            "<td>" + file.form_name + "</td>" +
-                            "<td>" + file.telephone + "</td>" +
-                            "<td>" + formatDate(date) + "</td>" +
-                            "</tr>"
-                        );
-                    });
-                }
+                json
             )
         });
     }

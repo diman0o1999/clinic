@@ -7,66 +7,86 @@ $(document).ready(function() {
     var arr = url.split('/');
     var last_url = arr[arr.length-1];
 
+    //ответ ajax
+    var json = function (data) {
+        var box = $('#list-medic');
+        box.empty();
+        data.forEach (function(file){
+            var raiting = '';
+            if(file.raiting == 0){
+                raiting = "Врача еще не оценили";
+            }
+            else{
+                raiting = file.raiting;
+            }
+
+            var num = $(".active").find('.hidden').text();
+            var daywork = '';
+            if(num == 1){
+                daywork = file.daywork1;
+            }
+            if(num == 2){
+                daywork = file.daywork2;
+            }
+            if(num == 3){
+                daywork = file.daywork3;
+            }
+            if(daywork == '') {
+                daywork = "Не принимает в этом филиале";
+            }
+            if(file.status_medic == 1) {
+                box.append(
+                    "<article class='doctor__item'>" +
+                    "<figure class='doctor__fig'><img src="+file.avatar.url+"></figure>" +
+                    "<div class='doctor__body'>" +
+                    "<div class='doctor__head'>" +
+                    "<h3 class='doctor__name'> <span class='doctor__name-f'>" + file.surname + "</span>" + file.user_name + ' ' + file.patronymic + "</h3>" +
+                    "<div class='doctor__meta'>" +
+                    "<div class='doctor__meta-lbl'>Дни приема:</div>" +
+                    "<div class='doctor__meta-item'>" + daywork + "</div>" +
+                    "</div>" +
+                    "<div class='doctor__desc'>" +
+                    "<span class='doctor__desc-item'>" + file.post1 + "</span>" +
+                    "<span class='doctor__desc-item'>" + file.post2 + "</span>" +
+                    "<span class='doctor__desc-item'>" + file.post3 + "</span>" +
+                    "</div>" +
+                    "</div>" +
+                    "<div class='doctor__entry'>" + file.about + "</div>" +
+                    "<div class='doctor__desc'>" +
+                    "<span class='doctor__desc-item_reiting'>Рейтинг: " + raiting + "</span>" +
+                    "<span class='hidden_id_medic"+file.id+"'></span>" +
+                    "</div>" +
+                    "<form class='mark_medic' id='mark_medic' action='/medics' accept-charset='UTF-8' data-remote='true' method='post'>" +
+                    "<input name='utf8' type='hidden' value='✓'>" +
+                    "<select id = 'mark' name = 'mark'>" +
+                    "<option value='1'>1</option>" +
+                    "<option value='2'>2</option>" +
+                    "<option value='3'>3</option>" +
+                    "<option value='4'>4</option>" +
+                    "<option value='5'>5</option>" +
+                    "</select>" +
+                    "<div class = 'mark_btn'>" +
+                    "<p><input type='submit' name='mark_btn' value='Оценить врача'</p>" +
+                    "</div>" +
+                    "<p><input type='hidden' name='medic_id' value='"+ file.id +"'</p>" +
+                    "<div class = 'hid_id_patient'>" +
+                    "<p><input type='hidden' name='patient_id' value=''</p>" +
+                    "</div>" +
+                    "</form>" +
+                    "</article>"
+                );
+            }
+        });
+    };
+
+
     //если текущий урл это врачи
     if(last_url == 'medics') {
+        var num = $(".active").find('.hidden').text();
         //выводим врачей по дефолту на первый филиал
         $.post(
-            "/medics/1",
-            function (data) {
-                var box = $('#list-medic');
-                box.empty();
-                data.forEach(function (file) {
-                    var raiting = '';
-                    if (file.raiting == 0) {
-                        raiting = "Врача еще не оценили";
-                    }
-                    else {
-                        raiting = file.raiting;
-                    }
-                    if(file.status_medic == 1) {
-                        box.append(
-                            "<article class='doctor__item'>" +
-                            "<figure class='doctor__fig'><img src="+file.avatar.url+"></figure>" +
-                            "<div class='doctor__body'>" +
-                            "<div class='doctor__head'>" +
-                            "<h3 class='doctor__name'> <span class='doctor__name-f'>" + file.surname + "</span>" + file.user_name + ' ' + file.patronymic + "</h3>" +
-                            "<div class='doctor__meta'>" +
-                            "<div class='doctor__meta-lbl'>Дни приема:</div>" +
-                            "<div class='doctor__meta-item'>" + file.daywork1 + "</div>" +
-                            "</div>" +
-                            "<div class='doctor__desc'>" +
-                            "<span class='doctor__desc-item'>" + file.post1 + "</span>" +
-                            "<span class='doctor__desc-item'>" + file.post2 + "</span>" +
-                            "<span class='doctor__desc-item'>" + file.post3 + "</span>" +
-                            "</div>" +
-                            "</div>" +
-                            "<div class='doctor__entry'>" + file.about + "</div>" +
-                            "<div class='doctor__desc'>" +
-                            "<span class='doctor__desc-item_reiting'>Рейтинг: " + raiting + "</span>" +
-                            "<span class='hidden_id_medic"+file.id+"'></span>" +
-                            "</div>" +
-                            "<form class='mark_medic' id='mark_medic' action='/medics' accept-charset='UTF-8' data-remote='true' method='post'>" +
-                            "<input name='utf8' type='hidden' value='✓'>" +
-                            "<select id = 'mark' name = 'mark'>" +
-                            "<option value='1'>1</option>" +
-                            "<option value='2'>2</option>" +
-                            "<option value='3'>3</option>" +
-                            "<option value='4'>4</option>" +
-                            "<option value='5'>5</option>" +
-                            "</select>" +
-                            "<div class = 'mark_btn'>" +
-                            "<p><input type='submit' name='mark_btn' value='Оценить врача'</p>" +
-                            "</div>" +
-                            "<p><input type='hidden' name='medic_id' value='"+ file.id +"'</p>" +
-                            "<div class = 'hid_id_patient'>" +
-                            "<p><input type='hidden' name='patient_id' value=''</p>" +
-                            "</div>" +
-                            "</form>" +
-                            "</article>"
-                        );
-                    }
-                });
-            }
+            "/medics/" + num,
+            json
         );
 
         //выборка врачей в зависимости от филиала
@@ -74,81 +94,13 @@ $(document).ready(function() {
             var num = $(this).find('.hidden').text();
             $.post(
                 "/medics/" + num,
-                function (data) {
-                    var box = $('#list-medic');
-                    box.empty();
-                    data.forEach (function(file){
-                        var raiting = '';
-                        if(file.raiting == 0){
-                            raiting = "Врача еще не оценили";
-                        }
-                        else{
-                            raiting = file.raiting;
-                        }
-
-                        var daywork = file.daywork;
-                        if(num == 1){
-                            daywork = file.daywork1;
-                        }
-                        if(num == 2){
-                            daywork = file.daywork2;
-                        }
-                        if(num == 3){
-                            daywork = file.daywork3;
-                        }
-                        if(daywork == '') {
-                            daywork = "Не принимает в этом филиале";
-                        }
-                        if(file.status_medic == 1) {
-                            box.append(
-                                "<article class='doctor__item'>" +
-                                "<figure class='doctor__fig'><img src="+file.avatar.url+"></figure>" +
-                                "<div class='doctor__body'>" +
-                                "<div class='doctor__head'>" +
-                                "<h3 class='doctor__name'> <span class='doctor__name-f'>" + file.surname + "</span>" + file.user_name + ' ' + file.patronymic + "</h3>" +
-                                "<div class='doctor__meta'>" +
-                                "<div class='doctor__meta-lbl'>Дни приема:</div>" +
-                                "<div class='doctor__meta-item'>" + daywork + "</div>" +
-                                "</div>" +
-                                "<div class='doctor__desc'>" +
-                                "<span class='doctor__desc-item'>" + file.post1 + "</span>" +
-                                "<span class='doctor__desc-item'>" + file.post2 + "</span>" +
-                                "<span class='doctor__desc-item'>" + file.post3 + "</span>" +
-                                "</div>" +
-                                "</div>" +
-                                "<div class='doctor__entry'>" + file.about + "</div>" +
-                                "<div class='doctor__desc'>" +
-                                "<span class='doctor__desc-item_reiting'>Рейтинг: " + raiting + "</span>" +
-                                "<span class='hidden_id_medic"+file.id+"'></span>" +
-                                "</div>" +
-                                "<form class='mark_medic' id='mark_medic' action='/medics' accept-charset='UTF-8' data-remote='true' method='post'>" +
-                                "<input name='utf8' type='hidden' value='✓'>" +
-                                "<select id = 'mark' name = 'mark'>" +
-                                "<option value='1'>1</option>" +
-                                "<option value='2'>2</option>" +
-                                "<option value='3'>3</option>" +
-                                "<option value='4'>4</option>" +
-                                "<option value='5'>5</option>" +
-                                "</select>" +
-                                "<div class = 'mark_btn'>" +
-                                "<p><input type='submit' name='mark_btn' value='Оценить врача'</p>" +
-                                "</div>" +
-                                "<p><input type='hidden' name='medic_id' value='"+ file.id +"'</p>" +
-                                "<div class = 'hid_id_patient'>" +
-                                "<p><input type='hidden' name='patient_id' value=''</p>" +
-                                "</div>" +
-                                "</form>" +
-                                "</article>"
-                            );
-                        }
-                    });
-                }
+                json
             )
         });
 
 
         //закидываем id пациента в форму оценки при клике на кнопку "оценить врача"
-        $('body').on('click', '.mark_btn', function () {
+        $("body").on('click', '.mark_btn', function () {
             var id_patient = $('.patient_id').text();
             $('.hid_id_patient input').val(id_patient);
         });
@@ -179,15 +131,15 @@ $(document).ready(function() {
         });
 
         //закрываем всплывающее окно на врачах
-        $('body').on('click', '.close_medic', function () {
+        $("body").on('click', '.close_medic', function () {
             $(".vspl_error").css('display', 'none');
         });
 
-        $('body').on('click', '.close_medic', function () {
+        $("body").on('click', '.close_medic', function () {
             $(".vspl_ok").css('display', 'none');
         });
 
-        $('body').on('click', '.close_medic', function () {
+        $("body").on('click', '.close_medic', function () {
             $(".vspl_error_422").css('display', 'none');
         })
     }

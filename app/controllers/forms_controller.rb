@@ -27,12 +27,12 @@ class FormsController < ApplicationController
 
     respond_to do |format|
       if @form.save
-        format.json { render json: {:form => @form} }
+        format.json { render json: {form: @form} }
 
         #отправляем уведомление о записи на почту админа
         FormMailer.service_email(@form).deliver_now
       else
-        format.json { render :json => @form.errors, :status => 422 }
+        format.json { render json: @form.errors, status: 422 }
       end
     end
   end

@@ -48,20 +48,20 @@ class PhysiciansController < ApplicationController
     if !@filial_id.nil?
       #перебираем все отмеченные филиалы и пишем в соединительную таблицу
       @filial_id.each do |fil|
-        Filials_Medic.create(:medic_id => @medic_id, :filial_id => fil)
+        Filials_Medic.create(medic_id: @medic_id, filial_id: fil)
       end
     end
 
     if !@departament_id.nil?
       #перебираем все отмеченные отделения и пишем в соединительную таблицу
       @departament_id.each do |dep|
-        Departaments_Medic.create(:medic_id => @medic_id, :departament_id => dep)
+        Departaments_Medic.create(medic_id: @medic_id, departament_id: dep)
       end
     end
 
 
     if @medic.update_attributes(medic_params)
-      flash[:success] = "Профиль обновлен!"
+      flash[:success] = 'Профиль обновлен!'
       redirect_to current_user
     else
       @filials = Filial.all

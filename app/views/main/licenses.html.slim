@@ -1,31 +1,31 @@
-- @title = "Лицензии"
+- @title = 'Лицензии'
 
-h2.title.title_for_page.about__title style=("text-align: center;")  Лицензии филиала на Коломяжском проспекте
+h2.title.title_for_page.about__title style=('text-align: center;')  Лицензии филиала на Коломяжском проспекте
 .fotorama data-nav="thumbs"
   - @images_pioner.each do |image|
     /отсекаем по слешу последнюю часть - т.е. название самого файла
     = image_tag "pictures/all-licenses/pioner/#{image.split('/').last}"
 
-h2.title.title_for_page.about__title style=("text-align: center;")  Лицензии филиала на Ленинском проспекте
+h2.title.title_for_page.about__title style=('text-align: center;')  Лицензии филиала на Ленинском проспекте
 .fotorama data-nav="thumbs"
   - @images_lenin.each do |image|
     /отсекаем по слешу последнюю часть - т.е. название самого файла
     = image_tag "pictures/all-licenses/lenin/#{image.split('/').last}"
 
 
-h2.title.title_for_page.about__title style=("text-align: center;")  Лицензии филиала на Коллонтай
+h2.title.title_for_page.about__title style=('text-align: center;')  Лицензии филиала на Коллонтай
 .fotorama data-nav="thumbs"
   - @images_bolhev.each do |image|
     /отсекаем по слешу последнюю часть - т.е. название самого файла
     = image_tag "pictures/all-licenses/bolhev/#{image.split('/').last}"
 
-h2.title.title_for_page.about__title style=("text-align: center;")  Сертификат ISO
+h2.title.title_for_page.about__title style=('text-align: center;')  Сертификат ISO
 .fotorama data-nav="thumbs"
   - @images_iso.each do |image|
     /отсекаем по слешу последнюю часть - т.е. название самого файла
     = image_tag "pictures/all-licenses/iso/#{image.split('/').last}"
 
-h2.title.title_for_page.about__title style=("text-align: center;")  Сертификаты клиники
+h2.title.title_for_page.about__title style=('text-align: center;')  Сертификаты клиники
 .fotorama data-nav="thumbs"
   - @images_sertific.each do |image|
     /отсекаем по слешу последнюю часть - т.е. название самого файла

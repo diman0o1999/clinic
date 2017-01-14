@@ -2,28 +2,30 @@ ru:
   activerecord:
       attributes:
           user:
-            user_name: "Имя"
-            surname: "Фамилию"
-            patronymic: "Отчество"
-            email: "Почта"
-            password: "Пароль"
-            password_confirmation: "Пароль подтверждения"
+            user_name: 'Имя'
+            surname: 'Фамилию'
+            patronymic: 'Отчество'
+            email: 'Почта'
+            password: 'Пароль'
+            password_confirmation: 'Пароль подтверждения'
           review:
-            text_reviews: "Текст отзыва"
+            text_reviews: 'Текст отзыва'
           question:
-            text_question: "Текст вопроса"
+            text_question: 'Текст вопроса'
           patient:
-            tel_number: "Телефон"
+            tel_number: 'Телефон'
           medic:
-            post1: "Должность"
-            about: "Информация о вас"
+            post1: 'Должность'
+            about: 'Информация о вас'
           physicians:
-            post1: "Должность"
-            about: "Информация о вас"
+            post1: 'Должность'
+            about: 'Информация о вас'
 
       errors:
         models:
           user:
             attributes:
               password_confirmation:
-                confirmation: "не совпадает"
+                confirmation: 'не совпадает'
+              email:
+                taken: 'пользователь с такой почтой уже зарегистирирован'

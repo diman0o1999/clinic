@@ -5,7 +5,7 @@ class MedicsController < ApplicationController
     @mark_medic = Mark_medic.new
 
     #если пациент, то выдергиваем его id
-    if role == "Пациент"
+    if role == 'Пациент'
       @patient_id = Patient.find_by(user_id: current_user.id).id
     end
 
@@ -37,7 +37,7 @@ class MedicsController < ApplicationController
   #обрабатываем оценки врачей
   def create
 
-    if role == "Пациент"
+    if role == 'Пациент'
 
       @mark_medic = Mark_medic.new(medic_mark_params)
 
@@ -62,8 +62,8 @@ class MedicsController < ApplicationController
           #находим врача и обновляем ему рейтинг
           @medic = Medic.find_by(id: params[:medic_id])
 
-          if @medic.update_attributes(:raiting => @medium_mark)
-            format.json { render json: {:mark_medic => @medium_mark, :id => params[:medic_id]} }
+          if @medic.update_attributes(raiting: @medium_mark)
+            format.json { render json: {mark_medic: @medium_mark, id: params[:medic_id]} }
           end
 
         end
@@ -71,7 +71,7 @@ class MedicsController < ApplicationController
 
     else
       respond_to do |format|
-          format.json { render json: {:mark_medic => 'Авторизуйтесь как пациент'}, :status => 423 }
+          format.json { render json: {mark_medic: 'Авторизуйтесь как пациент'}, status: 423 }
       end
     end
 

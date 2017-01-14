@@ -11,7 +11,7 @@ class ArticlesController < ApplicationController
   def create
     @article = Article.new(article_params)
     if @article.save
-      flash[:success] = "Статья добавлена!"
+      flash[:success] = 'Статья добавлена!'
       redirect_to articles_path
     else
       @article_title = params[:article][:title]

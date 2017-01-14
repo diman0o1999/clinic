@@ -1,4 +1,4 @@
-- @title = "Отзывы"
+- @title = 'Отзывы'
 
 section.page.section.review
   .header-h1 Отзывы о нашей стоматологии
@@ -6,23 +6,23 @@ section.page.section.review
   /если пользователь залогинен
   - if !current_user.nil?
     /и этот пользователь - пациент, то можем добавить отзыв (врач не может)
-    - if role == "Пациент"
+    - if role == 'Пациент'
       .header-h1 Добавить отзыв
       .inner
-        = form_for @review, url: {action: "create"} do |f|
+        = form_for @review, url: {action: 'create'} do |f|
           - if @review.errors.any?
             #error_explanation
-              h2 = "Обратите внимания на следующие поля:"
+              h2 = 'Обратите внимания на следующие поля:'
               ul
                 - @review.errors.full_messages.each do |message|
                   li = message
           .form-inline
             .form-user.review
-              = f.text_area :text_reviews, :required => true, :placeholder => "Текст отзыва*", :value => "#{@text_reviews}"
+              = f.text_area :text_reviews, required: true, placeholder: 'Текст отзыва*', value: "#{@text_reviews}"
             .form-user-btn
-              = f.submit("Добавить отзыв")
+              = f.submit('Добавить отзыв')
             .form-gr-4
-              = f.hidden_field :user_id, :value => current_user.id
+              = f.hidden_field :user_id, value: current_user.id
 
     - if !admin?
       - @reviews.each do |review|
@@ -32,8 +32,8 @@ section.page.section.review
             .inner
               blockquote.review__block
                 header.review__head
-                  h3.review__author = review.surname + " " +  review.user_name + " " + review.patronymic
-                  time.review__date = review.created_at.strftime("%d-%m-%Y %H:%M")
+                  h3.review__author = "#{review.surname}" ' ' "#{review.user_name}" ' ' "#{review.patronymic}"
+                  time.review__date = review.created_at.strftime('%d-%m-%Y %H:%M')
                 .review__body
                   p = review.text_reviews
 
@@ -41,7 +41,7 @@ section.page.section.review
   - elsif current_user.nil?
     .review_reg
       p Чтобы оставить отзыв, нужно войти
-      p = link_to "Войти", signin_path
+      p = link_to 'Войти', signin_path
 
     - @reviews.each do |review|
       /показываем только те, у которых статус = 1, т.е. опубликован
@@ -50,8 +50,8 @@ section.page.section.review
           .inner
             blockquote.review__block
               header.review__head
-                h3.review__author = review.surname + " " +  review.user_name + " " + review.patronymic
-                time.review__date = review.created_at.strftime("%d-%m-%Y %H:%M")
+                h3.review__author = "#{review.surname}" ' ' "#{review.user_name}" ' ' "#{review.patronymic}"
+                time.review__date = review.created_at.strftime('%d-%m-%Y %H:%M')
               .review__body
                 p = review.text_reviews
 
@@ -62,21 +62,21 @@ section.page.section.review
         blockquote.review__block
           .inner
             header.review__head
-              h3.review__author = review.surname + " " +  review.user_name + " " + review.patronymic
-              time.review__date = review.created_at.strftime("%d-%m-%Y %H:%M")
+              h3.review__author = "#{review.surname}" ' ' "#{review.user_name}" ' ' "#{review.patronymic}"
+              time.review__date = review.created_at.strftime('%d-%m-%Y %H:%M')
             .review__body
               p = review.text_reviews
 
       - if review.status_review == 0
-        .nosuc = "Не опубликован"
+        .nosuc = 'Не опубликован'
         = form_for @review, url: {action: "create"} do |f|
           .form-gr-4
-            = f.hidden_field :review_id, :value => review.id
-          p = submit_tag "Опубликовать", :name => 'public_btn'
+            = f.hidden_field :review_id, value: review.id
+          p = submit_tag 'Опубликовать', name: 'public_btn'
 
       - if review.status_review == 1
-        .suc = "Опубликован"
+        .suc = 'Опубликован'
         = form_for @review, url: {action: "create"} do |f|
           .form-gr-4
-            = f.hidden_field :review_id, :value => review.id
-          p = submit_tag "Снять с публикации", :name => 'nopublic_btn'
+            = f.hidden_field :review_id, value: review.id
+          p = submit_tag 'Снять с публикации', name: 'nopublic_btn'

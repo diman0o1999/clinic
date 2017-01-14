@@ -9,7 +9,7 @@ class PatientsController < ApplicationController
   def update
     @patient = Patient.find_by(user_id: params[:id])
     if @patient.update_attributes(patient_params)
-      flash[:success] = "Профиль обновлен!"
+      flash[:success] = 'Профиль обновлен!'
       redirect_to current_user
     else
       render 'edit'

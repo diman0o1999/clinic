@@ -8,7 +8,7 @@ section.review
             blockquote.review__block
               header.review__head
                 h3.review__author = review.surname + " " +  review.user_name + " " + review.patronymic
-                time.review__date = review.created_at.strftime("%d %B %Y %H:%M")
+                time.review__date = review.created_at.strftime('%d %B %Y %H:%M')
               .review__body
                 p = review.text_reviews
 

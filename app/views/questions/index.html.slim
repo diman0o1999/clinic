@@ -1,27 +1,27 @@
-- @title = "Вопрос-ответ"
+- @title = 'Вопрос-ответ'
 section.page.section.question
   .header-h1 Вопросы врачам клиники
 
   /если пользователь залогинен
   - if !current_user.nil?
     /и этот пользователь - пациент, то можем добавить отзыв (врач не может)
-    - if role == "Пациент"
+    - if role == 'Пациент'
       .header-h1 Добавить вопрос
       .inner
-        = form_for @question, url: {action: "create"} do |f|
+        = form_for @question, url: {action: 'create'} do |f|
           - if @question.errors.any?
             #error_explanation
-              h2 = "Обратите внимания на следующие поля:"
+              h2 = 'Обратите внимания на следующие поля:'
               ul
                 - @question.errors.full_messages.each do |message|
                   li = message
           .form-inline
             .form-user.review
-              = f.text_area :text_question, :required => true, :placeholder => "Текст вопроса*", :value => "#{@text_question}"
+              = f.text_area :text_question, required: true, placeholder: "Текст вопроса*", value: "#{@text_question}"
             .form-user-btn
-              = f.submit("Добавить вопрос")
+              = f.submit('Добавить вопрос')
             .form-gr-4
-              = f.hidden_field :patient_id, :value => "#{@patient}"
+              = f.hidden_field :patient_id, value: "#{@patient}"
 
     - if !admin?
       /перебираем все вопросы с индексом
@@ -32,15 +32,15 @@ section.page.section.question
             dt.question__item
               .inner.block
                 header.question__head
-                  h3.question__author = "Пациент: "
+                  h3.question__author = 'Пациент: '
                   /вынимаем из массива пациентов всех пациентов по порядку в соответствии с индексом
                   div = @patient_questions[index]
-                  time.question__date = question.created_at.strftime("%d-%m-%Y %H:%M")
+                  time.question__date = question.created_at.strftime('%d-%m-%Y %H:%M')
                 .question__body = question.text_question
             dd.question__item
               .inner.block
                 header.question__head
-                  h3.question__author = "Ответил врач: "
+                  h3.question__author = 'Ответил врач: '
                   /вынимаем из массива врачей всех врачей по порядку в соответствии с индексом
                   div = @medic_questions[index]
                 .question__body = question.text_answer
@@ -59,15 +59,15 @@ section.page.section.question
           dt.question__item
             .inner.block
               header.question__head
-                h3.question__author = "Пациент: "
+                h3.question__author = 'Пациент: '
                 /вынимаем из массива пациентов всех пациентов по порядку в соответствии с индексом
                 div = @patient_questions[index]
-                time.question__date = question.created_at.strftime("%d-%m-%Y %H:%M")
+                time.question__date = question.created_at.strftime('%d-%m-%Y %H:%M')
               .question__body = question.text_question
           dd.question__item
             .inner.block
               header.question__head
-                h3.question__author = "Ответил врач: "
+                h3.question__author = 'Ответил врач: '
                 /вынимаем из массива врачей всех врачей по порядку в соответствии с индексом
                 div = @medic_questions[index]
               .question__body = question.text_answer
@@ -80,33 +80,33 @@ section.page.section.question
         dt.question__item
           .inner.block
             header.question__head
-              h3.question__author = "Пациент: "
+              h3.question__author = 'Пациент: '
               /вынимаем из массива пациентов всех пациентов по порядку в соответствии с индексом
               div = @patient_questions[index]
-              time.question__date = question.created_at.strftime("%d-%m-%Y %H:%M")
+              time.question__date = question.created_at.strftime('%d-%m-%Y %H:%M')
             .question__body = question.text_question
         dd.question__item
           .inner.block
             header.question__head
-              h3.question__author = "Ответил врач: "
+              h3.question__author = 'Ответил врач: '
               /вынимаем из массива врачей всех врачей по порядку в соответствии с индексом
               div = @medic_questions[index]
             .question__body = question.text_answer
 
       - if question.status_question == 0
-        .nosuc = "Не опубликован"
-        = form_for @question, url: {action: "create"} do |f|
+        .nosuc = 'Не опубликован'
+        = form_for @question, url: {action: 'create'} do |f|
           .form-gr-4
-            = f.hidden_field :question_id, :value => question.id
+            = f.hidden_field :question_id, value: question.id
           .form-user.review
-            = f.text_area :text_answer, :placeholder => "Текст ответа*", :value => "#{@text_answer}"
+            = f.text_area :text_answer, placeholder: 'Текст ответа*', value: "#{@text_answer}"
           .form-user.select_medics
             = select_tag :medic_id, options_for_select(@all_medic)
-          p = submit_tag "Опубликовать", :name => 'public_btn'
+          p = submit_tag 'Опубликовать', name: 'public_btn'
 
       - if question.status_question == 1
-        .suc = "Опубликован"
-        = form_for @question, url: {action: "create"} do |f|
+        .suc = 'Опубликован'
+        = form_for @question, url: {action: 'create'} do |f|
           .form-gr-4
-            = f.hidden_field :question_id, :value => question.id
-          p = submit_tag "Снять с публикации", :name => 'nopublic_btn'
+            = f.hidden_field :question_id, value: question.id
+          p = submit_tag 'Снять с публикации', name:'nopublic_btn'

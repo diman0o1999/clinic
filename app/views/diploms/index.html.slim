@@ -1,11 +1,11 @@
-- @title = "Дипломы и сертификаты"
+- @title = 'Дипломы и сертификаты'
 .inner
-  h2.title.title_for_page.about__title style=("text-align: center;")  Выбор врача
+  h2.title.title_for_page.about__title style=('text-align: center;')  Выбор врача
   /#select-medic = select_tag :medics, options_for_select(@medics)
   #select-medic
-    = select(@medics, "medics") do
+    = select(@medics, 'medics') do
       - @medics.each do |medic|
-        - @name =  medic.surname + " " + medic.user_name + " " + medic.patronymic
+        - @name =  "#{medic.surname}" "#{medic.user_name}" "#{medic.patronymic}"
         = content_tag :option, @name , value: medic.id
 
   #carousel-diplom.carousel.slide data-interval="false"

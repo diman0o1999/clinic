@@ -60,7 +60,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       sign_in(@user)
-      flash[:success] = "Поздравляем, вы зарегистрировались!"
+      flash[:success] = 'Поздравляем, вы зарегистрировались!'
       redirect_to @user
     else
       @user_name = params[:user][:user_name]
@@ -79,7 +79,7 @@ class UsersController < ApplicationController
     @roles = Role.first(2)
 
     if @user.update_attributes(user_params)
-      flash[:success] = "Профиль обновлен!"
+      flash[:success] = 'Профиль обновлен!'
       redirect_to @user
     else
       render 'edit'
@@ -88,7 +88,7 @@ class UsersController < ApplicationController
 
   def destroy
     User.find(params[:id]).destroy
-    flash[:success] = "Вы удалены!"
+    flash[:success] = 'Вы удалены!'
     redirect_to root_path
   end
 
@@ -98,7 +98,7 @@ class UsersController < ApplicationController
     if params[:patient_btn]
       @patient = Patient.new(patient_params)
       if @patient.save
-        flash[:success] = "Готово!"
+        flash[:success] = 'Готово!'
         redirect_to current_user
       else
         @user = current_user
@@ -122,18 +122,18 @@ class UsersController < ApplicationController
         #перебираем все отмеченные филиалы и пишем в соединительную таблицу
         if !@filial_id.nil?
           @filial_id.each do |fil|
-            Filials_Medic.create(:medic_id => @medic_id, :filial_id => fil)
+            Filials_Medic.create(medic_id: @medic_id, filial_id: fil)
           end
         end
 
         #перебираем все отмеченные отделения и пишем в соединительную таблицу
         if !@departament_id.nil?
           @departament_id.each do |dep|
-            Departaments_Medic.create(:medic_id => @medic_id, :departament_id => dep)
+            Departaments_Medic.create(medic_id: @medic_id, departament_id: dep)
           end
         end
 
-        flash[:success] = "Готово!"
+        flash[:success] = 'Готово!'
         redirect_to current_user
       else
         @user = current_user
@@ -155,7 +155,7 @@ class UsersController < ApplicationController
       #врач, который записался в базу
       @medic_public = Medic.find_by(user_id: params[:id])
       if @medic_public.update_attributes(:status_medic => 1)
-        flash[:success] = "Опубликован!"
+        flash[:success] = 'Опубликован!'
         redirect_to current_user
       else
         render current_user
@@ -166,7 +166,7 @@ class UsersController < ApplicationController
       #врач, который записался в базу
       @medic_public = Medic.find_by(user_id: params[:id])
       if @medic_public.update_attributes(:status_medic => 0)
-        flash[:success] = "Снят с публикации!"
+        flash[:success] = 'Снят с публикации!'
         redirect_to current_user
       else
         render current_user
@@ -204,7 +204,7 @@ class UsersController < ApplicationController
   def signed_in_user
     #если текущий пользователь пустой
     if current_user.nil?
-      flash[:notice] = "Авторизуйтесь для продолжения!"
+      flash[:notice] = 'Авторизуйтесь для продолжения!'
       redirect_to signin_url
     end
   end

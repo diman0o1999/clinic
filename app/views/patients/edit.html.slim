@@ -1,11 +1,11 @@
-- @title = "Редактируем карточку пациента"
+- @title = 'Редактируем карточку пациента'
 .inner
   .header-h1 Редактируем карточку пациента
   p
-    = form_for @patient, url: {action: "update"}, :html => {:multipart => true} do |f|
+    = form_for @patient, url: {action: 'update'}, html: {multipart: true} do |f|
       - if @patient.errors.any?
         #error_explanation
-          h2 = "Обратите внимания на следующие поля:"
+          h2 = 'Обратите внимания на следующие поля:'
           ul
             - @patient.errors.full_messages.each do |message|
               li = message
@@ -15,6 +15,6 @@
           = f.file_field :avatar
           = f.hidden_field :avatar_cache
         .form-user
-          = f.telephone_field :tel_number, :required => true, :placeholder => "Телефон*", :minlength => 5, :value => "#{@patient_tel}"
+          = f.telephone_field :tel_number, required: true, placeholder: 'Телефон*', minlength: 5, value: "#{@patient_tel}"
         .form-user-btn
-          = submit_tag "ГОТОВО", :name => 'patient_btn'
+          = submit_tag 'ГОТОВО', name: 'patient_btn'

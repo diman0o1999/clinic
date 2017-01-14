@@ -1,17 +1,17 @@
 p
-  = form_for @form, :remote => true do |f|
+  = form_for @form, remote: true do |f|
     - if @form.errors.any?
       #error_explanation
-        h2 = "#{pluralize(@form.errors.count, "error")} :прежде чем отправить заявку, заполните поля:"
+        h2 = "#{pluralize(@form.errors.count, 'error')} :прежде чем отправить заявку, заполните поля:"
         ul
           - @form.errors.full_messages.each do |message|
             li = message
     .form-inline
       .form-gr
-        = f.text_field :form_name, :required => true, :placeholder => "Фамилия Имя Отчество*", :minlength => 3, :value => "#{@form_name}"
+        = f.text_field :form_name, required: true, placeholder: 'Фамилия Имя Отчество*', minlength: 3, value: "#{@form_name}"
       .form-gr-2
-        = f.telephone_field :telephone, :required => true, :placeholder => "Телефон*", :minlength => 5, :value => "#{@telephone}"
+        = f.telephone_field :telephone, required: true, placeholder: 'Телефон*', minlength: 5, value: "#{@telephone}"
       .form-gr-3
-        = f.submit("ЗАПИСАТЬСЯ")
+        = f.submit('ЗАПИСАТЬСЯ')
       .form-gr-4
         = f.hidden_field :filial_id, :value => "#{@filial}"

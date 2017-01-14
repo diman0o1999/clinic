@@ -1,4 +1,4 @@
-- @title = "Статьи"
+- @title = 'Статьи'
 .inner
   .header-h1 Статьи
   ul.article__list
@@ -10,19 +10,19 @@
     - if admin?
       .header-h1 Добавить статью
       p
-        = form_for @article, url: {action: "create"} do |f|
+        = form_for @article, url: {action: 'create'} do |f|
           - if @article.errors.any?
             #error_explanation
-              h2 = "Обратите внимание на следующие поля:"
+              h2 = 'Обратите внимание на следующие поля:'
               ul
                 - @article.errors.full_messages.each do |message|
                   li = message
           .form-inline
             .form-user.article
-              = f.text_field :title, :required => true, :placeholder => "Заголовок статьи*", :value => "#{@article_title}"
+              = f.text_field :title, required: true, placeholder: 'Заголовок статьи*', value: "#{@article_title}"
             .form-user.article
-              = f.text_field :description, :required => true, :placeholder => "Описание статьи*", :value => "#{@article_description}"
+              = f.text_field :description, required: true, placeholder: 'Описание статьи*', value: "#{@article_description}"
             .form-user.article
-              = f.text_area :text, :required => true, :placeholder => "Текст статьи*", :value => "#{@article_text}"
+              = f.text_area :text, required: true, placeholder: 'Текст статьи*', value: "#{@article_text}"
             .form-user-btn
-              = f.submit("Сохранить статью")
+              = f.submit('Сохранить статью')

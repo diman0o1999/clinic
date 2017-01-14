@@ -1,26 +1,26 @@
-- @title = "Страница пользователя:" "#{@user.user_name}" + " " + "#{@user.surname}"
+- @title = 'Страница пользователя:' "#{@user.user_name}" + ' ' + "#{@user.surname}"
 .inner
   /общая инфа по пользователю
   .header-h1 Информация о пользователе
   table.users_role
     tbody
       tr.info_user
-        td = "Фамилия"
+        td = 'Фамилия'
         td.info_user_small = "#{@user.surname}"
       tr.info_user
-        td = "Имя"
+        td = 'Имя'
         td.info_user_small = "#{@user.user_name}"
       tr.info_user
-        td = "Отчество"
+        td = 'Отчество'
         td.info_user_small = "#{@user.patronymic}"
       tr.info_user
-        td = "Почта"
+        td = 'Почта'
         td.info_user_small = "#{@user.email}"
       tr.info_user
-        td = "Вы"
+        td = 'Вы'
         td.info_user_small = "#{@role.role_name}"
 
-  .href_user_info = link_to "Обновить", edit_user_path
+  .href_user_info = link_to 'Обновить', edit_user_path
   /.href_user_info = link_to "Удалить", @user, method: :delete, data: { confirm: "Уверен?" }
 
   /если пользователь врач
@@ -31,111 +31,111 @@
       table.users_role
         tbody
           tr.info_user
-            td = "Фото"
+            td = 'Фото'
             td.info_user_small
               img alt="" src="#{@about_medic.avatar}"
           tr.info_user
-            td = "Должность №1"
+            td = 'Должность №1'
             td.info_user_small = "#{@about_medic.post1}"
           tr.info_user
-            td = "Должность №2"
+            td = 'Должность №2'
             td.info_user_small = "#{@about_medic.post2}"
           tr.info_user
-            td = "Должность №3"
+            td = 'Должность №3'
             td.info_user_small = "#{@about_medic.post3}"
 
           tr.info_user
-            td = "Вы работаете в филиале"
+            td = 'Вы работаете в филиале'
             td.info_user_small
               - @medic_filials.each do |filial|
-                = filial.filial_name + " "
+                = filial.filial_name + ' '
 
           tr.info_user
-            td = "Вы работаете в отделении"
+            td = 'Вы работаете в отделении'
             td.info_user_small
               - @medic_departaments.each do |departament|
-                = departament.departament_name + " "
+                = departament.departament_name + "\n"
 
           tr.info_user
-            td = "Дни работы в филиале на Коломяжском"
+            td = 'Дни работы в филиале на Коломяжском'
             td.info_user_small = "#{@about_medic.daywork1}"
           tr.info_user
-            td = "Дни работы в филиале на Коллонтай"
+            td = 'Дни работы в филиале на Коллонтай'
             td.info_user_small = "#{@about_medic.daywork2}"
           tr.info_user
-            td = "Дни работы в филиале на Ленинском"
+            td = 'Дни работы в филиале на Ленинском'
             td.info_user_small = "#{@about_medic.daywork3}"
           tr.info_user
-            td = "О вас"
+            td = 'О вас'
             td.info_user_small = "#{@about_medic.about}"
           tr.info_user
-            td = "Ваш рейтинг"
+            td = 'Ваш рейтинг'
             td.info_user_small = "#{@about_medic.raiting}"
           tr.info_user
-            td = "Ваш статус"
+            td = 'Ваш статус'
             - if @about_medic.status_medic == 0
               td.info_user_small
-                p = "Не опубликован"
+                p = 'Не опубликован'
                 - if admin?
-                  = form_for @medic, url: {action: "create_dop_info"} do |f|
-                    p = submit_tag "Опубликовать", :name => 'public_btn'
+                  = form_for @medic, url: {action: 'create_dop_info'} do |f|
+                    p = submit_tag 'Опубликовать', name: 'public_btn'
             - else @about_medic.status_medic == 1
               td.info_user_small
-                p = "Опубликован"
+                p = 'Опубликован'
                 - if admin?
-                  p = form_for @medic, url: {action: "create_dop_info"} do |f|
-                    p = submit_tag "Снять с публикации", :name => 'nopublic_btn'
+                  p = form_for @medic, url: {action: 'create_dop_info'} do |f|
+                    p = submit_tag 'Снять с публикации', name: 'nopublic_btn'
 
-      .href_user_info = link_to "Обновить", edit_physician_path
+      .href_user_info = link_to 'Обновить', edit_physician_path
 
     /если карточка врача пустая
     - else
       .header-h1 Заполните карточку врача
       p
-        = form_for @medic, url: {action: "create_dop_info"}, :html => {:multipart => true} do |f|
+        = form_for @medic, url: {action: 'create_dop_info'}, html: {multipart: true} do |f|
           - if @medic.errors.any?
             #error_explanation
-              h2 = "Обратите внимания на следующие поля:"
+              h2 = 'Обратите внимания на следующие поля:'
               ul
                 - @medic.errors.full_messages.each do |message|
                   li = message
           .form-inline
             .form-avatar
-              = f.file_field :avatar, :required => true
+              = f.file_field :avatar, required: true
             .form-user
-              = f.text_field :post1, :required => true, :placeholder => "Должность №1*"
+              = f.text_field :post1, required: true, placeholder: 'Должность №1*'
             .form-user
-              = f.text_field :post2, :placeholder => "Должность №2*"
+              = f.text_field :post2, placeholder: 'Должность №2*'
             .form-user
-              = f.text_field :post3, :placeholder => "Должность №3*"
+              = f.text_field :post3, placeholder: 'Должность №3*'
 
             .all_fil
-              .what_fil = "В каких филиалых вы работаете:"
+              .what_fil = 'В каких филиалых вы работаете:'
               - @filials.each do |filiale|
                 .fil
                   .filname = f.label :filials, filiale.filial_name
-                  .filcheck = f.check_box :filials, { :multiple => true }, "#{filiale.id}", nil
+                  .filcheck = f.check_box :filials, { multiple: true }, "#{filiale.id}", nil
 
             .form-user
-              = f.text_field :daywork1, :placeholder => "Дни работы на Коломяжском*"
+              = f.text_field :daywork1, placeholder: 'Дни работы на Коломяжском*'
             .form-user
-              = f.text_field :daywork2, :placeholder => "Дни работы на Коллонтай*"
+              = f.text_field :daywork2, placeholder: 'Дни работы на Коллонтай*'
             .form-user
-              = f.text_field :daywork3, :placeholder => "Дни работы на Ленинском*"
+              = f.text_field :daywork3, placeholder: 'Дни работы на Ленинском*'
 
             .all_fil
-              .what_fil = "В каких отделениях вы работаете:"
+              .what_fil = 'В каких отделениях вы работаете:'
               - @departaments.each do |departamente|
                 .fil
                   .filname = f.label :departaments, departamente.departament_name
-                  .filcheck = f.check_box :departaments, { :multiple => true }, "#{departamente.id}", nil
+                  .filcheck = f.check_box :departaments, { multiple: true }, "#{departamente.id}", nil
 
             .form-user.text_fil_area
-              = f.text_area :about, :required => true, :placeholder => "О вас*"
+              = f.text_area :about, required: true, placeholder: 'О вас / минимум 50 символов*'
             .form-user
-              = f.hidden_field :user_id, :value => "#{@user.id}"
+              = f.hidden_field :user_id, value: "#{@user.id}"
             .form-user-btn
-              = submit_tag "ГОТОВО", :name => 'medic_btn'
+              = submit_tag 'ГОТОВО', name: 'medic_btn'
 
   /если пользователь пациент
   - elsif @role.id == 2
@@ -145,23 +145,23 @@
       table.users_role
         tbody
           tr.info_user
-            td = "Фото"
+            td = 'Фото'
             td.info_user_small
               img alt="" src="#{@about_patient.avatar}"
           tr.info_user
-            td = "Номер телефона"
+            td = 'Номер телефона'
             td.info_user_small = "#{@about_patient.tel_number}"
 
-      .href_user_info = link_to "Обновить", edit_patient_path
+      .href_user_info = link_to 'Обновить', edit_patient_path
 
     /если карточка пациента пустая
     - else
       .header-h1 Заполните карточку пациента
       p
-        = form_for @patient, url: {action: "create_dop_info"}, :html => {:multipart => true} do |f|
+        = form_for @patient, url: {action: 'create_dop_info'}, html: {multipart: true} do |f|
           - if @patient.errors.any?
             #error_explanation
-              h2 = "Обратите внимания на следующие поля:"
+              h2 = 'Обратите внимания на следующие поля:'
               ul
                 - @patient.errors.full_messages.each do |message|
                   li = message
@@ -169,8 +169,8 @@
             .form-avatar
               = f.file_field :avatar, :required => true
             .form-user
-              = f.telephone_field :tel_number, :required => true, :placeholder => "Телефон*", :minlength => 5, :value => "#{@tel_number}"
+              = f.telephone_field :tel_number, required: true, placeholder: 'Телефон*', minlength: 5, value: "#{@tel_number}"
             .form-user
-              = f.hidden_field :user_id, :value => "#{@user.id}"
+              = f.hidden_field :user_id, value: "#{@user.id}"
             .form-user-btn
-              = submit_tag "ГОТОВО", :name => 'patient_btn'
+              = submit_tag 'ГОТОВО', name: 'patient_btn'
