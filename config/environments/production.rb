@@ -75,7 +75,7 @@ Rails.application.configure do
       user_name: 'm.ryadn@@gmail.com',
       password: '*****',
       authentication: 'plain',
-      enable_starttls_auto => true
+      enable_starttls_auto: true
   }
   #настройки gmail для отправки почты
 
