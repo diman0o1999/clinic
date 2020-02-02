@@ -51,10 +51,10 @@ ActiveRecord::Schema.define(version: 20170105142533) do
     t.string   "address"
     t.string   "time_work"
     t.string   "day_work"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
     t.string   "telephone_full"
     t.string   "map"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
   end
 
   create_table "filials_medics", force: :cascade do |t|
@@ -83,19 +83,19 @@ ActiveRecord::Schema.define(version: 20170105142533) do
   end
 
   create_table "medics", force: :cascade do |t|
+    t.integer  "user_id"
     t.string   "daywork1"
-    t.string   "post1"
-    t.string   "avatar"
-    t.datetime "created_at",               null: false
-    t.datetime "updated_at",               null: false
-    t.string   "about"
-    t.integer  "raiting",      default: 0
-    t.string   "post2"
-    t.string   "post3"
     t.string   "daywork2"
     t.string   "daywork3"
-    t.integer  "user_id"
+    t.string   "about"
+    t.string   "post1"
+    t.string   "post2"
+    t.string   "post3"
+    t.string   "avatar"
+    t.integer  "raiting"
     t.integer  "status_medic", default: 0
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
   end
 
   create_table "patients", force: :cascade do |t|
@@ -116,20 +116,20 @@ ActiveRecord::Schema.define(version: 20170105142533) do
 
   create_table "questions", force: :cascade do |t|
     t.integer  "patient_id"
-    t.integer  "medic_id"
+    t.integer  "medic_id",        default: 32
     t.text     "text_question"
     t.text     "text_answer"
     t.integer  "status_question", default: 0
-    t.datetime "created_at",                  null: false
-    t.datetime "updated_at",                  null: false
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
   end
 
   create_table "reviews", force: :cascade do |t|
     t.integer  "user_id"
     t.text     "text_reviews"
+    t.integer  "status_review", default: 0
     t.datetime "created_at",                null: false
     t.datetime "updated_at",                null: false
-    t.integer  "status_review", default: 0
   end
 
   create_table "roles", force: :cascade do |t|
@@ -139,17 +139,18 @@ ActiveRecord::Schema.define(version: 20170105142533) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string   "email"
-    t.string   "password_digest"
-    t.integer  "role_id"
-    t.datetime "created_at",                      null: false
-    t.datetime "updated_at",                      null: false
+    t.string   "user_name"
     t.string   "surname"
     t.string   "patronymic"
-    t.string   "user_name"
+    t.string   "email"
+    t.string   "password_digest"
     t.string   "remember_token"
+    t.integer  "role_id"
     t.boolean  "admin",           default: false
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
     t.index ["email"], name: "index_users_on_email", using: :btree
+    t.index ["remember_token"], name: "index_users_on_remember_token", using: :btree
   end
 
 end
